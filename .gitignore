@@ -114,3 +114,15 @@ build
 .strapi-updater.json
 
 package-lock.json
+
+
+############################
+# Nuxt
+############################
+
+# Nuxt dev/build outputs
+.output
+.nuxt
+# System files
+*.log
+dist
