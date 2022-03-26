@@ -21,7 +21,7 @@ export default {
     // }
   },
   async fetch() {
-    this.articles = await this.$axios.$get("/articles")
+    this.articles = await this.$axios.$get("/services")
   }
 }
 </script>

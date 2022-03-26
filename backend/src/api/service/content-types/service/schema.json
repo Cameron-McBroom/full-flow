@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "services",
+  "info": {
+    "singularName": "service",
+    "pluralName": "services",
+    "displayName": "Service",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "descriptionLong": {
+      "type": "richtext"
+    },
+    "images": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::image.image",
+      "inversedBy": "services"
+    },
+    "descriptionShort": {
+      "type": "text"
+    }
+  }
+}

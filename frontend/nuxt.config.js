@@ -54,11 +54,13 @@ export default {
     }
   },
 
-  axios: {},
+  axios: {
+    baseURL: 'http://localhost:1337/api'
+  },
 
   publicRuntimeConfig: {
     axios: {
-      baseURL: 'https://vast-atoll-40641.herokuapp.com/api'
+      baseURL: process.env.API_BASE_URL
     }
   },
 }
