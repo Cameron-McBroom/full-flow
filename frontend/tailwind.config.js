@@ -1,12 +1,28 @@
 module.exports = {
   content: ["./src/**/*.{html,js},"],
   darkMode: 'class',
+  variants: {
+    extend: {
+      borderWidth: ['hover', 'focus', 'first', 'last']
+    }
+  },
   theme: {
     fontFamily: {
-      'sans': ['Montserrat', 'ui-sans-serif'],
-      'mono': ['Fira Code', 'ui-monospace']
+      'sans': ['Nunito Sans', 'ui-sans-serif'],
+      'sans-serif': ['Source Serif Pro', 'ui-serif']
     },
-    extend: {},
+    extend: {
+      colors: {
+        cblue: '#1A174A',
+        cred: '#DE0404'
+      },
+      transitionProperty: {
+        'height': 'height'
+      },
+      fontSize: {
+        'base': '1.125rem'
+      },
+    },
   },
   plugins: [],
 }
