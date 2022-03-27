@@ -63,4 +63,9 @@ export default {
       baseURL: process.env.API_BASE_URL
     }
   },
+
+  purgeCSS: {
+    whitelistPatterns: [/svg.*/, /fa.*/]
+  },
+
 }
