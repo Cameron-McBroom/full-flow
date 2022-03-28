@@ -5,7 +5,7 @@
       <!-- Mobile call icon when small      -->
       <div class="block md:hidden">
         <div class="flex">
-          <a class="px-2 py-1 text-cblue" href="tel:+61401817894">
+          <a class="px-2 py-1 text-cblue" href="tel:+61412857681">
             <font-awesome-icon :icon="faPhone"/>
           </a>
         </div>

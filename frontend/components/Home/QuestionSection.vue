@@ -1,8 +1,8 @@
 <template>
-   <div class="text-base">
+   <div class="text-base mx-5 md:mx-0">
      <h2 class="text-3xl font-bold pb-10 md:pb-20"> Frequently Asked Questions </h2>
 
-     <div class="max-w-screen-md mx-auto px-5 md:px-0">
+     <div class="max-w-screen-md mx-auto">
 
        <accordian
            v-for="n in 5"

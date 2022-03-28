@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="mx-5 md:mx-0">
     <h2 class="text-3xl font-bold pb-10 md:pb-20"> Get in touch for a free quote </h2>
     
-    <div class="flex flex-col md:flex-row text-left">
-      <div class="px-5 pb-5 flex flex-col items-start gap-2">
+    <div class="flex flex-col md:flex-row text-left gap-5">
+      <div class="pb-5 flex flex-col items-start gap-2">
         <img
             src="https://res.cloudinary.com/cmcbroom/image/upload/v1648263608/uplift_painting_decorating_logo_design_1_f77c4f2ce0.webp?updated_at=2022-03-26T03:08:29.530Z"
             alt="logo"
@@ -16,7 +16,7 @@
         <p>100% Satisfaction Guarantee</p>
       </div>
 
-      <request-form class="flex-1 mx-5 md:mx-0"/>
+      <request-form class="flex-1"/>
       
       
     </div>
