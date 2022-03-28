@@ -7,13 +7,9 @@
           v-for="service in services"
           :title="service.title"
           :short-desc="service.shortDesc"
-          image-url="https://res.cloudinary.com/cmcbroom/image/upload/v1648335126/ralph_ravi_kayden_2d4l_AQ_Alb_DA_unsplash_461a04d31c.jpg?updated_at=2022-03-26T22:52:10.743Z"/>
+          :image-url="service.imageUrl"
+          :key="service.title"/>
 
-      <service-box
-          v-for="service in services"
-          :title="service.title"
-          :short-desc="service.shortDesc"
-          image-url="https://res.cloudinary.com/cmcbroom/image/upload/v1648335125/minh_pham_7p_CF_Uyb_P_P8_unsplash_26c5848375.jpg?updated_at=2022-03-26T22:52:10.153Z"/>
     </div>
   </div>
 </template>
@@ -32,14 +28,15 @@ export default {
   },
   methods: {
     async fetchServices() {
-      const res = await this.$axios.$get("/services?populate=coverImage");
+      const {data} = await this.$axios.$get("/services?populate=coverImage");
 
-      this.services = res.data.map(item => {
+      this.services = data.map(item => {
         return {
           title: item.attributes.name,
-          shortDesc: item.attributes.descriptionShort
+          shortDesc: item.attributes.descriptionShort,
+          imageUrl: item.attributes.coverImage.data.attributes.formats.small.url
         }
-      })
+      });
     }
   },
   async fetch() {

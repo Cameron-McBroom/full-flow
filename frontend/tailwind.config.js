@@ -3,7 +3,8 @@ module.exports = {
   darkMode: 'class',
   variants: {
     extend: {
-      borderWidth: ['hover', 'focus', 'first', 'last']
+      borderWidth: ['hover', 'focus', 'first', 'last'],
+      brightness: ['hover']
     }
   },
   theme: {

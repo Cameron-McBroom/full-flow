@@ -4,16 +4,20 @@
 
       <!-- Mobile call icon when small      -->
       <div class="block md:hidden">
-        <div class="flex">
+        <div class="flex gap-2">
           <a class="px-2 py-1 text-cblue" href="tel:+61412857681">
             <font-awesome-icon :icon="faPhone"/>
+          </a>
+
+          <a class="px-2 py-1 text-cblue" href="sms:+61412857681">
+            <font-awesome-icon :icon="faMessage"/>
           </a>
         </div>
       </div>
 
       <nuxt-link to="/"  class="text-center">
         <div class="flex items-center">
-          <img :src="logoUrl" alt="logo" class="w-32 p-2">
+          <img :src="logoUrl" alt="logo" class="w-32 p-2 mr-5 md:mr-0">
         </div>
 <!--          <p class="pr-3 m-0 font-mono text-lg font-extrabold md:text-2xl md:pr-0">Return Evolved</p></div>-->
       </nuxt-link>
@@ -62,7 +66,7 @@
 <script>
 import HamburgerButton from "@/components/NavBar/HamburgerButton";
 import MobileMenuOverlay from "@/components/NavBar/MobileMenuOverlay";
-import { faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faPhone, faMessage } from '@fortawesome/free-solid-svg-icons';
 
 export default {
   name: "NavBar",
@@ -78,8 +82,8 @@ export default {
       if (!(this.$mq === "sm")) return true
       return this.mobileMenuShowing
     },
-    faMoon() {
-      return faMoon;
+    faMessage() {
+      return faMessage;
     },
     faPhone() {
       return faPhone;

@@ -3,8 +3,8 @@
 
     <div class="grid grid-cols-2 md:grid-cols-3 grid-flow-row-dense gap-3">
 
-      <div v-for="(image) in images" class="max-h-80">
-        <img :src="image.smallUrl" :alt="image.alt" class="h-full w-full object-cover">
+      <div v-for="(image) in imagesToShow" class="max-h-80 ">
+        <img :src="image.smallUrl" :alt="image.alt" class="h-full w-full object-cover filter hover:brightness-75 duration-200 cursor-pointer">
       </div>
 
     </div>
@@ -18,6 +18,14 @@ export default {
   data() {
     return {
       images: []
+    }
+  },
+  computed: {
+    imagesToShow() {
+      if (this.images.length > 9) {
+        return this.images.slice(0, 9);
+      }
+      return this.images
     }
   },
   methods: {

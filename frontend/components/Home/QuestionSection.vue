@@ -5,9 +5,10 @@
      <div class="max-w-screen-md mx-auto">
 
        <accordian
-           v-for="n in 5"
-           title="This is a question"
-           content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus eius eum illum ipsam, possimus praesentium quibusdam tempore? Adipisci aliquid, architecto at explicabo harum iure minima molestias, nam quaerat sapiente, temporibus?"/>
+           v-for="question in faqs"
+           :title="question.question"
+           :content="question.answer"
+           :key="question.question"/>
      </div>
    </div>
 </template>
@@ -19,6 +20,21 @@ export default {
   name: "QuestionSection",
   components: {
     Accordian
+  },
+  data() {
+    return {
+      faqs: []
+    }
+  },
+  async fetch() {
+    const res = await this.$axios.$get('/faqs')
+
+    this.faqs = res.data.map(i => {
+      return {
+        question: i.attributes.question,
+        answer: i.attributes.answer
+      }
+    })
   }
 }
 </script>
