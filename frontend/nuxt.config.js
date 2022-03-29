@@ -32,7 +32,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/v-mq.js'
+    '~/plugins/v-mq.js',
+    '~/plugins/v-markdown.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -56,7 +57,8 @@ export default {
 
   fontawesome: {
     icons: {
-      solid: ['faChevronRight', 'faPhone', 'faQuoteLeft', 'faMessage']
+      solid: ['faChevronRight', 'faPhone', 'faQuoteLeft', 'faMessage', 'faCaretDown', 'faAt'],
+      brands: ['faFacebook', 'faInstagram',]
     }
   },
 

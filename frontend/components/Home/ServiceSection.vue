@@ -3,12 +3,13 @@
     <h2 class="font-bold text-3xl pb-10 md:pb-20"> Whatever the job, we have you covered </h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-left">
 
-      <service-box
-          v-for="service in services"
-          :title="service.title"
-          :short-desc="service.shortDesc"
-          :image-url="service.imageUrl"
-          :key="service.title"/>
+      <nuxt-link v-for="service in services" :to="`/service/${slugForTitle(service.title)}`" :key="service.title">
+        <service-box
+            class="h-full"
+            :title="service.title"
+            :short-desc="service.shortDesc"
+            :image-url="service.imageUrl"/>
+      </nuxt-link>
 
     </div>
   </div>
@@ -37,6 +38,9 @@ export default {
           imageUrl: item.attributes.coverImage.data.attributes.formats.small.url
         }
       });
+    },
+    slugForTitle(title) {
+      return title.replace(" ", "-").toLowerCase()
     }
   },
   async fetch() {

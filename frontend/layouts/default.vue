@@ -1,46 +1,22 @@
 <template>
   <div class="bg-gray-100 text-cblue">
-    <header>
+    <header class="pb-16">
       <nav-bar></nav-bar>
     </header>
     <nuxt/>
     <footer class="bg-cblue text-white">
-      <div class="max-w-screen-lg flex justify-between text-left mx-auto px-3 py-10 md:flex-row flex-wrap gap-5">
-        <div class="max-w-xl">
-          <h3 class="font-bold">Uplift Painting and Decorating</h3>
-          <p>Licence No. 345470</p>
-          <p>Kellyville Ridge NSW 2155</p>
-          <p class="underline"><a href="tel:+61412857681">0412 857 681</a></p>
-          <p class="underline"><a href="mailto:upliftpaintinganddecorating@gmail.com">upliftpaintinganddecorating@gmail.com</a></p>
-          <p>100% Satisfaction Guarantee</p>
-        </div>
-
-        <div class="max-w-xl">
-          <h3 class="font-bold">Services</h3>
-          <p><a href="#">Interior Painting</a></p>
-          <p><a href="#">Exterior Painting</a></p>
-          <p><a href="#">Painting and Decorating</a></p>
-          <p><a href="#">Timber Staining</a></p>
-          <p><a href="#">Epoxy Flooring</a></p>
-          <p><a href="#">Commerical Painting</a></p>
-        </div>
-
-        <div class="max-w-xl">
-          <h3 class="font-bold">Service Areas</h3>
-          <p><a href="#">Western Sydney</a></p>
-          <p><a href="#">Hills District</a></p>
-          <p><a href="#">Greater Sydney</a></p>
-          <p><a href="#">Inner West</a></p>
-        </div>
-      </div>
+      <footer-bar/>
 
     </footer>
   </div>
 </template>
 
 <script>
+import FooterBar from "@/components/FooterBar";
+
 export default {
-  name: "default"
+  name: "default",
+  components: {FooterBar}
 }
 </script>
 
@@ -50,8 +26,28 @@ html {
   background-color: theme('colors.gray.100');
 }
 
-h1,h2,h3,h4,h5 {
+h1, h2, h3, h4, h5 {
   font-family: 'Source Serif Pro', 'serif';
+}
+
+h1 {
+  @apply text-4xl font-bold;
+}
+
+h2 {
+  @apply text-3xl font-bold;
+}
+
+h3 {
+  @apply text-2xl font-bold;
+}
+
+h4 {
+  @apply text-lg font-bold;
+}
+
+h5 {
+  @apply text-lg font-bold;
 }
 
 .text-gradient {
@@ -77,5 +73,10 @@ h1,h2,h3,h4,h5 {
 .btn-menu {
   @apply border-transparent border-b-2 hover:border-cred hover:border-b-2 px-4 py-2 transition-all duration-200;
 }
+
+.btn-menu-no-underline {
+  @apply px-4 py-2;
+}
+
 
 </style>

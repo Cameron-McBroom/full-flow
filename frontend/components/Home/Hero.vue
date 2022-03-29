@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full pt-16">
+  <div class="h-full">
     <div class="hero-image h-full">
       <div class="max-w-screen-lg mx-auto h-full text-white md:text-cblue">
         <div class="md:bg-white p-5 max-w-sm absolute top-1/4  -translate-y-1/2">

@@ -24,7 +24,7 @@
 
       <div class="flex">
         <div class="flex justify-between md:ml-5 md:order-2">
-          <button
+          <button @click="scrollToQuoteForm"
             class="hidden md:inline-block btn-primary-blue">
             Free Quote
           </button>
@@ -45,18 +45,22 @@
               <nuxt-link to="/" class="btn-menu">Home</nuxt-link>
             </li>
             <li>
-              <nuxt-link to="/portfolio" class="btn-menu">Services</nuxt-link>
+              <dropdown-button btn-text="Services" v-if="$store.state.services.length">
+                  <nuxt-link v-for="service in $store.state.services" :key="service.name" :to="`/service/${service.path}`" class="hover:bg-gray-200 cursor-pointer px-5 py-3 transition-all duration-200">
+                    {{ service.name }}
+                  </nuxt-link>
+              </dropdown-button>
             </li>
             <li>
-              <nuxt-link to="/portfolio" class="btn-menu">Gallery</nuxt-link>
+              <nuxt-link to="/gallery" class="btn-menu">Gallery</nuxt-link>
             </li>
             <li>
-              <nuxt-link to="/portfolio" class="btn-menu">About</nuxt-link>
+              <nuxt-link to="/about" class="btn-menu">About</nuxt-link>
             </li>
           </ul>
         </div>
 
-        <mobile-menu-overlay ref="menuOverlay" @closed="mobileMenuShowing = false"/>
+        <mobile-menu-overlay ref="menuOverlay" @closed="mobileMenuShowing = false" :logoUrl="logoUrl"/>
 
       </div>
     </div>
@@ -87,6 +91,9 @@ export default {
     },
     faPhone() {
       return faPhone;
+    },
+    services() {
+      return this.$store.state.services
     }
   },
   methods: {
@@ -98,16 +105,30 @@ export default {
       }
       this.mobileMenuShowing = !this.mobileMenuShowing
     },
-    toggleDarkMode() {
-      document.body.classList.toggle("dark");
+    scrollToQuoteForm() {
+      document.querySelector('#quoteSection').scrollIntoView({behavior: 'smooth'})
     },
     async getLogoUrl() {
       const global = await this.$axios.$get('/global?populate[defaultSeo][populate][0]=shareImage')
       this.logoUrl = global.data.attributes.defaultSeo.shareImage.data.attributes.url
+    },
+    async fetchServices() {
+      const res = await this.$axios.$get('/services');
+      this.services = res.data.map(i => {
+        console.log(i.attributes.name);
+
+        return {
+          path: i.attributes.name.replace(' ', '-').toLowerCase(),
+          name: i.attributes.name
+        }
+      })
+
+      console.log(this.services);
     }
   },
   async fetch() {
     await this.getLogoUrl();
+    // await this.fetchServices();
   }
 }
 </script>

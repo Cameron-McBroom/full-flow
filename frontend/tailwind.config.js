@@ -4,7 +4,8 @@ module.exports = {
   variants: {
     extend: {
       borderWidth: ['hover', 'focus', 'first', 'last'],
-      brightness: ['hover']
+      brightness: ['hover'],
+      display: ['hover']
     }
   },
   theme: {

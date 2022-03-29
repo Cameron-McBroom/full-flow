@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-5 md:mx-0">
+  <div id="quoteSection" class="mx-5 md:mx-0">
     <h2 class="text-3xl font-bold pb-10 md:pb-20"> Get in touch for a free quote </h2>
     
     <div class="flex flex-col md:flex-row text-left gap-5">

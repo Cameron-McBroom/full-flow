@@ -9,7 +9,7 @@
       <service-section class="pt-24 md:pt-32"/>
       <matt-section class="pt-24 md:pt-32"/>
       <question-section class="pt-24 md:pt-32"/>
-      <quote-section id="quoteSection" class="pt-24 md:pt-32"/>
+      <quote-section class="pt-24 md:pt-32"/>
     </div>
 
   </div>

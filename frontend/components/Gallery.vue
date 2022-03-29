@@ -40,17 +40,9 @@ export default {
           url: item.attributes.image.data.attributes.url,
           mediumUrl: item.attributes.image.data.attributes.formats.medium.url,
           smallUrl: smallImage.url,
-          colEnd: this.getSpanEstimate(smallImage.width),
-          rowEnd: this.getSpanEstimate(smallImage.height)
         }
       });
     },
-    getSpanEstimate(size) {
-      if (size > 250) {
-        return 2
-      }
-      return 1
-    }
   },
   async fetch() {
     await this.fetchImages()

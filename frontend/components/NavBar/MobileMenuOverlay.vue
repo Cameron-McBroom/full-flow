@@ -1,26 +1,87 @@
 <template>
-  <div ref="myNav" class="z-10 h-0 w-full fixed left-0 top-0 overflow-x-hidden transition-all duration-500 bg-black">
+  <div ref="myNav"
+       class="z-10 h-0 w-full fixed left-0 top-0 overflow-x-hidden transition-all duration-500 bg-gray-200 bg-opacity-100">
 
     <!-- Button to close the overlay navigation -->
-    <button class="float-right text-6xl text-gray-400 text-gray-100 px-3" @click.prevent="closeNav">&times;</button>
+    <button class="absolute text-4xl text-gray-400 text-gray-100 top-4 right-4" @click.prevent="closeNav">&times;
+    </button>
 
     <!-- Overlay content -->
-    <div class="relative flex flex-col gap-y-5 top-1/4 w-full text-center mt-20 text-gray-300 text-2xl duration-500">
-      <a href="#" class="hover:text-gray-100">About</a>
-      <a href="#" class="hover:text-gray-100" >Services</a>
-      <a href="#" class="hover:text-gray-100">Clients</a>
-      <a href="#" class="hover:text-gray-100">Contact</a>
+    <div class="p-5 flex flex-col w-full text-left text-cblue text-2xl duration-500">
+      <div class="mx-auto mb-5">
+        <img :src="logoUrl" alt="logo" class="w-52 mb-2">
+        <div class="flex gap-1.5 opacity-80 justify-between text-base">
+          <a href="https://www.facebook.com/Upliftpaintinganddecorating/">
+            <font-awesome-icon :icon="faFacbook"/>
+          </a>
+          <a href="https://www.instagram.com/upliftpaintinganddecorating/">
+            <font-awesome-icon :icon="faInstagram"/>
+          </a>
+          <a href="tel:+61412857681">
+            <font-awesome-icon :icon="faPhone"/>
+          </a>
+          <a href="sms:+61412857681">
+            <font-awesome-icon :icon="faMessage"/>
+          </a>
+          <a href="mailto:info@upliftpainting.com.au">
+            <font-awesome-icon :icon="faAt"/>
+          </a>
+        </div>
+      </div>
+
+      <nuxt-link to="/">
+        <div class="flex justify-between items-center py-5 border-b-2 border-t-2 border-gray-300">
+          <span> Home </span>
+          <font-awesome-icon :icon="faChevronRight" class="text-lg text-gray-400"/>
+        </div>
+      </nuxt-link>
+
+      <nuxt-link to="/gallery">
+        <div class="flex justify-between items-center py-5 border-b-2 border-gray-300">
+          <span> Gallery </span>
+          <font-awesome-icon :icon="faChevronRight" class="text-lg text-gray-400"/>
+        </div>
+      </nuxt-link>
+
+      <nuxt-link to="/about">
+        <div class="flex justify-between items-center py-5 border-b-2 border-gray-300">
+          <span> About </span>
+          <font-awesome-icon :icon="faChevronRight" class="text-lg text-gray-400"/>
+        </div>
+      </nuxt-link>
+
+      <div class="py-5 border-b-2 border-gray-300">
+        <div class="flex justify-between items-center mb-2">
+          <span> Services </span>
+          <font-awesome-icon :icon="faChevronRight" class="text-lg text-gray-400 fa-rotate-90"/>
+        </div>
+        <div class="flex flex-col">
+          <nuxt-link
+              v-for="service in $store.state.services"
+              :to="`/service/${service.path}`"
+              :key="service.name"
+              class="pl-5 text-lg">
+            {{ service.name }}
+          </nuxt-link>
+        </div>
+      </div>
+
     </div>
 
   </div>
 </template>
 
 <script>
-import { faMoon } from '@fortawesome/free-solid-svg-icons';
+
+import {faMessage, faPhone, faAt, faChevronRight} from '@fortawesome/free-solid-svg-icons';
+import {faFacebook, faInstagram} from '@fortawesome/free-brands-svg-icons';
 
 
 export default {
   name: "MobileMenuOverlay",
+  props: {
+    logoUrl: String
+  },
   methods: {
     closeNav() {
       this.$refs.myNav.style.height = "0%";
@@ -31,7 +92,29 @@ export default {
     }
   },
   computed: {
-    faMoon() { return faMoon }
+    faPhone() {
+      return faPhone;
+    },
+    faAt() {
+      return faAt;
+    },
+    faFacbook() {
+      return faFacebook;
+    },
+    faInstagram() {
+      return faInstagram;
+    },
+    faMessage() {
+      return faMessage;
+    },
+    faChevronRight() {
+      return faChevronRight;
+    },
+  },
+  watch: {
+    $route() {
+      this.closeNav();
+    }
   }
 }
 </script>
@@ -47,8 +130,8 @@ export default {
   z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
-  background-color: rgb(0,0,0); /* Black fallback color */
-  background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+  background-color: rgb(0, 0, 0); /* Black fallback color */
+  background-color: rgba(0, 0, 0, 0.9); /* Black w/opacity */
   overflow-x: hidden; /* Disable horizontal scroll */
   transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
 }
@@ -87,7 +170,10 @@ export default {
 
 /* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
 @media screen and (max-height: 450px) {
-  .overlay a {font-size: 20px}
+  .overlay a {
+    font-size: 20px
+  }
+
   .overlay .closebtn {
     font-size: 40px;
     top: 15px;
