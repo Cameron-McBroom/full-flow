@@ -4,7 +4,7 @@ exports.handler = async function (event, context) {
     console.log(event);
     console.log(context);
 
-    const {body} = context;
+    const {body} = event;
     console.log("Body from netlify: ", body)
     const data = {
         data: body
