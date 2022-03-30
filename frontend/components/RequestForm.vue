@@ -50,12 +50,17 @@ export default {
     async submitForm() {
       console.log("Submitting form");
 
-      const res = await fetch('/.netlify/functions/requestQuote', {
+      const response = await fetch('/.netlify/functions/requestQuote', {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify(this.form)
-      }).then(res => res.json())
+      })
 
-      console.log("Response from request back in vue: ", res);
+      const data = response.json()
+
+      console.log("Response from request back in vue: ", data);
     }
   }
 }
