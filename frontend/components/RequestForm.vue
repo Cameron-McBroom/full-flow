@@ -24,9 +24,11 @@
                 class="w-full bg-gray-100 h-24 border border-gray-200 p-2 rounded-none"/>
     </div>
 
-    <button class="btn-primary-red">
-      Get free quote
+    <button class="btn-primary-red" :disabled="submitting">
+      {{ submitting ? 'Loading...' : 'Get free quote' }}
     </button>
+
+    <div class="font-bold" v-if="message"> {{ message }} </div>
   </form>
 </template>
 
@@ -35,6 +37,8 @@ export default {
   name: "RequestForm",
   data() {
     return {
+      submitting: false,
+      message: '',
       form: {
         name: '',
         email: '',
@@ -50,17 +54,39 @@ export default {
     async submitForm() {
       console.log("Submitting form");
 
-      const response = await fetch('/.netlify/functions/requestQuote', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(this.form)
-      })
+      this.message = false;
+      this.submitting = true;
+      try {
+        const response = await fetch('/.netlify/functions/requestQuote', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(this.form)
+        })
 
-      const data = await response.json()
+        const data = await response.json()
 
-      console.log("Response from request back in vue: ", data);
+        console.log("Response from request back in vue: ", data);
+
+        this.form = {
+          name: '',
+          email: '',
+          phone: '',
+          description: ''
+        }
+
+        this.submitting = false;
+        this.message = 'Thanks for requesting a quote. We will be in touch to learn how we can help.'
+      }
+      catch (e) {
+        console.log("Failed to submit form")
+        this.message = 'There was an error trying to submit your request';
+        this.submitting = false;
+
+      }
+
+
     }
   }
 }
