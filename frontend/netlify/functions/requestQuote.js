@@ -5,9 +5,14 @@ exports.handler = async function (event, context) {
     console.log(context);
 
     const {body} = context;
+    console.log("Body from netlify: ", body)
+    const data = {
+        data: body
+    }
+    console.log("Body to be sent: ", data)
 
     try {
-        const response = await axios.post(`${process.env.API_BASE_URL}/quote-form-submissions`, {data: body}, {
+        const response = await axios.post(`${process.env.API_BASE_URL}/quote-form-submissions`, data, {
             headers: {
                 Authorization:
                     `Bearer ${process.env.STRAPI_KEY}`

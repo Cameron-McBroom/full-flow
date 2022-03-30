@@ -55,7 +55,7 @@ export default {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: this.form
+        body: JSON.stringify(this.form)
       })
 
       const data = await response.json()
