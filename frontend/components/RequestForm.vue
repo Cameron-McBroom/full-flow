@@ -1,20 +1,20 @@
 <template>
-  <form class="p-4 grid gap-5 bg-white border border-gray-200" @submit.prevent>
+  <form class="p-4 grid gap-5 bg-white border border-gray-200" @submit.prevent="submitForm">
     <div>
       <label for="name" class="block">Name*</label>
-      <input name="name" id="name" type="text" required v-model="form.name" enterkeyhint="next" @keyup.enter="focusOn('#email')"
+      <input name="name" id="name" type="text" required v-model="form.name" enterkeyhint="next" @keypress.enter.prevent="focusOn('#email')"
              class="w-full bg-gray-100 h-12 border border-gray-200 p-2 rounded-none"/>
     </div>
 
     <div>
       <label for="email" class="block">Email*</label>
-      <input name="email" id="email" type="email" required v-model="form.email" enterkeyhint="next" @keyup.enter="focusOn('#phone')"
+      <input name="email" id="email" type="email" required v-model="form.email" enterkeyhint="next" @keypress.enter.prevent="focusOn('#phone')"
              class="w-full bg-gray-100 h-12 border border-gray-200 p-2 rounded-none"/>
     </div>
 
     <div>
       <label for="phone" class="block">Phone*</label>
-      <input name="phone" id="phone" type="tel" required v-model="form.phone" enterkeyhint="next" @keyup.enter="focusOn('#description')"
+      <input name="phone" id="phone" type="tel" required v-model="form.phone" enterkeyhint="next" @keypress.enter.prevent="focusOn('#description')"
              class="w-full bg-gray-100 h-12 border border-gray-200 p-2 rounded-none"/>
     </div>
 
@@ -46,6 +46,16 @@ export default {
   methods: {
     focusOn(id) {
       document.querySelector(id).focus();
+    },
+    async submitForm() {
+      console.log("Submitting form");
+
+      const res = await fetch('/.netlify/functions/requestQuote', {
+        method: 'POST',
+        body: JSON.stringify(this.form)
+      }).then(res => res.json())
+
+      console.log(res);
     }
   }
 }

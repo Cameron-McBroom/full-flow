@@ -1,14 +1,17 @@
 <template>
   <div class="max-w-screen-lg mx-auto text-center" v-if="filteredService">
     <div class="pt-16 md:pt-24 text-left mx-5">
-      <h1 class="text-4xl font-bold mb-4"> {{ filteredService.name }} </h1>
-      <vue-markdown class="text-base markdown"> {{ filteredService.descriptionLong }}</vue-markdown>
+      <h1 class="text-4xl font-bold mb-4"> {{ filteredService.attributes.name }} </h1>
+      <vue-markdown class="text-base markdown"> {{ filteredService.attributes.descriptionLong }}</vue-markdown>
     </div>
 
     <div class="pt-16 md:pt-24 mx-5">
-      <h2 class="text-center pb-10 md:pb-20"> Get some inspiration from our {{ filteredService.name.toLowerCase() }}
+      <h2 class="text-center pb-10 md:pb-20"> Get some inspiration from our {{ filteredService.attributes.name.toLowerCase() }}
       work </h2>
-      <gallery class="mt-10"/>
+      <gallery class="mb-10 md:mb-20" :service-ids="[filteredService.id]"/>
+      <nuxt-link to="/gallery">
+        <button class="btn-primary-blue-outline">See the full gallery</button>
+      </nuxt-link>
     </div>
     <review-section class="pt-16 md:pt-24"/>
     <quote-section class="py-16 md:py-24"/>
@@ -34,16 +37,16 @@ export default {
   },
   computed: {
     seo() {
-       return this.filteredService?.seo?.attributes || null
+       return this.filteredService?.attributes?.seo?.attributes || null
     }
   },
   async asyncData({ params, redirect, $axios }) {
     const services = await $axios.$get('/services?populate=seo').then(res => {
       const {data} = res;
-      return data.map(i => i.attributes)
+      return data.map(i => i)
     })
 
-    const filteredService = services.find(i => i.name.replace(" ", "-").toLowerCase() === params.service);
+    const filteredService = services.find(i => i.attributes.name.replace(" ", "-").toLowerCase() === params.service);
 
     if (!filteredService) redirect('/')
 

@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "about_advantages",
+  "info": {
+    "singularName": "about-advantage",
+    "pluralName": "about-advantages",
+    "displayName": "About Advantage",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "description": {
+      "type": "richtext"
+    },
+    "supportingImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

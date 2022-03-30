@@ -1,36 +1,63 @@
 <template>
   <div>
-
-    <div class="grid grid-cols-2 md:grid-cols-3 grid-flow-row-dense gap-3">
-
-      <div v-for="(image) in imagesToShow" class="max-h-80 ">
-        <img :src="image.smallUrl" :alt="image.alt" class="h-full w-full object-cover filter hover:brightness-75 duration-200 cursor-pointer">
-      </div>
-
+    <div v-if="!imagesToShow.length">
+      <p class="text-lg">Sadly no images for this category. See the gallery for all our images.</p>
     </div>
 
+    <div v-else class="grid grid-cols-2 md:grid-cols-3 grid-flow-row-dense gap-3">
+
+      <div v-for="(image, imgIndex) in imagesToShow" class="max-h-80" @click="index = imgIndex">
+        <img :src="image.smallUrl" :alt="image.alt"
+             class="h-full w-full object-cover filter hover:brightness-75 duration-200 cursor-pointer">
+      </div>
+
+      <cool-light-box :items="imagesToShow.map(i => i.largeUrl)" :index="index" @close="index=null"/>
+
+    </div>
   </div>
+
 </template>
 
 <script>
+import CoolLightBox from "vue-cool-lightbox";
+import "vue-cool-lightbox/dist/vue-cool-lightbox.min.css";
+
 export default {
   name: 'Gallery',
+  components: {
+    CoolLightBox
+  },
+  props: {
+    serviceIds: {
+      type: Array,
+      default: () => []
+    }
+  },
   data() {
     return {
-      images: []
+      images: [],
+      index: null
     }
   },
   computed: {
     imagesToShow() {
-      if (this.images.length > 9) {
-        return this.images.slice(0, 9);
+      let filteredImages = [...this.images];
+
+      if (this.serviceIds.length) {
+        // Here we filter the images for any of the services passed. If no service ids have been passed we ignore this step
+        filteredImages = filteredImages.filter(i => i.serviceIds.some(id => this.serviceIds.includes(id)))
       }
-      return this.images
+
+      if (filteredImages.length > 9) {
+        return filteredImages.slice(0, 9);
+      }
+
+      return filteredImages;
     }
   },
   methods: {
     async fetchImages() {
-      const res = await this.$axios.$get("/images?populate=image")
+      const res = await this.$axios.$get("/images?populate=%2A")
 
       this.images = res.data.map(item => {
         const smallImage = item.attributes.image.data.attributes.formats.small
@@ -38,8 +65,10 @@ export default {
         return {
           alt: item.attributes.description,
           url: item.attributes.image.data.attributes.url,
+          largeUrl: item.attributes.image.data.attributes.formats.medium.url,
           mediumUrl: item.attributes.image.data.attributes.formats.medium.url,
           smallUrl: smallImage.url,
+          serviceIds: item.attributes.services.data.map(s => s.id)
         }
       });
     },

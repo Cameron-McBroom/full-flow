@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "quote_form_submissions",
+  "info": {
+    "singularName": "quote-form-submission",
+    "pluralName": "quote-form-submissions",
+    "displayName": "Quote Form Submission",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}
