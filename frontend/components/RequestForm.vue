@@ -55,10 +55,10 @@ export default {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(this.form)
+        body: this.form
       })
 
-      const data = response.json()
+      const data = await response.json()
 
       console.log("Response from request back in vue: ", data);
     }
