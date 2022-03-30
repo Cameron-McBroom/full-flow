@@ -55,7 +55,7 @@ export default {
         body: JSON.stringify(this.form)
       }).then(res => res.json())
 
-      console.log(res);
+      console.log("Response from request back in vue: ", res);
     }
   }
 }

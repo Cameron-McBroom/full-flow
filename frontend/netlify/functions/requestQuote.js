@@ -7,7 +7,7 @@ exports.handler = async function (event, context) {
     const {body} = context;
 
     try {
-        const response = await axios.post(`${process.env.API_BASE_URL}/quote-form-submission`, {data: body}, {
+        const response = await axios.post(`${process.env.API_BASE_URL}/quote-form-submissions`, {data: body}, {
             headers: {
                 Authorization:
                     `Bearer ${process.env.STRAPI_KEY}`
