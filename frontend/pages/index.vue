@@ -24,20 +24,11 @@ import MattSection from "@/components/Home/MattSection";
 import QuestionSection from "@/components/Home/QuestionSection";
 import QuoteSection from "@/components/Home/QuoteSection";
 
+import global from "@/mixins/global";
+
 export default {
   name: 'IndexPage',
-  head() {
-    return {
-      title: this.seo.title,
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: this.seo.description
-        }
-      ]
-    }
-  },
+  mixins: [global],
   components: {
     QuoteSection,
     QuestionSection,
@@ -47,30 +38,13 @@ export default {
     Hero,
     GallerySection
   },
-  data() {
-    return {
-      seo: {
-        title: '',
-        description: '',
-        shareImageUrl: '',
-      }
-    }
-  },
   methods: {
-    async fetchSeoMeta() {
-      const seoRes = await this.$axios.$get('homepage?populate[seo][populate][0]=shareImage');
-      const seoData = seoRes.data.attributes.seo;
-
-      this.seo.title = seoData.metaTitle;
-      this.seo.description = seoData.metaDescription;
-      this.seo.shareImageUrl = seoData.shareImage.data.attributes.url;
-    },
     scrollToQuoteForm() {
       document.querySelector('#quoteSection').scrollIntoView({behavior: 'smooth'})
     }
   },
   async fetch() {
-    await this.fetchSeoMeta();
+    await this.fetchSeoMeta('homepage');
   }
 }
 </script>

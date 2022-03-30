@@ -29,12 +29,18 @@ export const actions = {
 
         const images = res.data.map(item => {
             const mediumImage = item.attributes.image.data.attributes.formats.medium
+            const largeImage = item.attributes.image.data.attributes.formats.large
             const smallImage = item.attributes.image.data.attributes.formats.small
 
             return {
                 id: item.id,
                 alt: item.attributes.description,
                 url: item.attributes.image.data.attributes.url,
+                large: {
+                    url: largeImage.url,
+                    width: largeImage.width,
+                    height: largeImage.height
+                },
                 medium: {
                     url: mediumImage.url,
                     width: mediumImage.width,

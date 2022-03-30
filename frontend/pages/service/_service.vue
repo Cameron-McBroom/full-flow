@@ -20,8 +20,25 @@ import QuoteSection from "@/components/Home/QuoteSection";
 import ReviewSection from "@/components/Home/ReviewSection";
 export default {
   components: {ReviewSection, QuoteSection},
+  head() {
+    return {
+      title: this.seo?.title | 'Service | Uplift Painting',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.seo?.description | ''
+        }
+      ]
+    }
+  },
+  computed: {
+    seo() {
+       return this.filteredService?.seo?.attributes || null
+    }
+  },
   async asyncData({ params, redirect, $axios }) {
-    const services = await $axios.$get('/services').then(res => {
+    const services = await $axios.$get('/services?populate=seo').then(res => {
       const {data} = res;
       return data.map(i => i.attributes)
     })

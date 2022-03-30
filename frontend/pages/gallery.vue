@@ -1,43 +1,68 @@
 <template>
   <div class="max-w-screen-lg mx-auto text-center py-24 md:py-32">
-    <div class="mb-24 md:mb-32">
+    <div class="mb-24 md:mb-32 px-2">
       <h1 class="text-4xl">The Uplift Gallery</h1>
       <p class="text-xl mt-2"> See our work quality and get some ideas for your next project</p>
     </div>
 
     <div class="hidden md:grid grid-cols-3 gap-5 items-start mb-24 md:mb-32">
-      <div class="grid gap-5">
-        <img v-for="id in trippleColumnIds[0]" :src="imageWithId(id).medium.url" :alt="imageWithId(id).alt" :key="id">
+      <div v-for="n in 3" class="grid gap-5">
+        <img v-for="(id) in trippleColumnIds[n-1]"
+             :src="imageWithId(id).medium.url"
+             :alt="imageWithId(id).alt"
+             :key="id"
+             @click="index=indexOfImage(id)"
+             class="filter hover:brightness-75 duration-200 cursor-pointer">
       </div>
 
-      <div class="grid gap-5">
-        <img v-for="id in trippleColumnIds[1]" :src="imageWithId(id).medium.url" :alt="imageWithId(id).alt" :key="id">
-      </div>
-
-      <div class="grid gap-5">
-        <img v-for="id in trippleColumnIds[2]" :src="imageWithId(id).medium.url" :alt="imageWithId(id).alt" :key="id">
-      </div>
     </div>
 
     <div class="grid md:hidden grid-cols-2 gap-5 items-start mb-24 md:mb-32">
-      <div class="grid gap-5">
-        <img v-for="id in doubleColumnIds[0]" :src="imageWithId(id).medium.url" :alt="imageWithId(id).alt" :key="id">
-      </div>
 
-      <div class="grid gap-5">
-        <img v-for="id in doubleColumnIds[1]" :src="imageWithId(id).medium.url" :alt="imageWithId(id).alt" :key="id">
+      <div v-for="n in 2" class="grid gap-5">
+        <img v-for="(id) in doubleColumnIds[n-1]"
+             :src="imageWithId(id).medium.url"
+             :alt="imageWithId(id).alt"
+             :key="id"
+             @click="index=indexOfImage(id)"
+             class="filter hover:brightness-75 duration-200 cursor-pointer">
       </div>
     </div>
 
     <quote-section/>
+
+    <cool-light-box :items="orderedImages.map(i => i.url)" :index="index" @close="index=null"/>
+
   </div>
 </template>
 
 <script>
 import QuoteSection from "@/components/Home/QuoteSection";
+import global from "@/mixins/global";
+
+import CoolLightBox from "vue-cool-lightbox";
+import "vue-cool-lightbox/dist/vue-cool-lightbox.min.css";
+
 export default {
-  components: {QuoteSection},
+  components: {QuoteSection, CoolLightBox},
+  mixins: [global],
+  data() {
+    return {
+      index: null
+    }
+  },
   computed: {
+    // Returns a 1D array of the photos ids
+    orderedImageIds() {
+      if (this.$mq === 'sm') {
+        return this.doubleColumnIds.flat()
+      }
+      return this.trippleColumnIds.flat()
+    },
+
+    orderedImages() {
+      return this.orderedImageIds.map(id => this.$store.state.images[id]);
+    },
     trippleColumnIds() {
       // Shuffle randomly 20 times to find the closest height
       let best = [[]];
@@ -78,6 +103,10 @@ export default {
     },
   },
   methods: {
+    indexOfImage(id) {
+      return this.orderedImageIds.indexOf(id);
+    },
+
     imageWithId(id) {
       return this.$store.state.images[id];
     },
@@ -129,6 +158,10 @@ export default {
       return [heightOfCol(imgColsId[0]), heightOfCol(imgColsId[1])]
     },
 
+  },
+
+  async fetch() {
+    await this.fetchSeoMeta('gallery');
   }
 }
 </script>
