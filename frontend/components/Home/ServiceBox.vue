@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col bg-white border border-gray-200 cursor-pointer filter hover:brightness-90 duration-200">
     <div>
-      <img :src="imageUrl" alt="service-image" class="h-60 w-full object-cover">
+      <img :src="imageUrl" alt="service-image" class="h-60 w-full object-cover"/>
     </div>
     <div class="p-5 flex justify-between gap-2 items-center my-auto">
       <div class="flex-1">

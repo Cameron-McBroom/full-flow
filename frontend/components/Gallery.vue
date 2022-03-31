@@ -8,7 +8,7 @@
 
       <div v-for="(image, imgIndex) in imagesToShow" class="max-h-80" @click="index = imgIndex">
         <img :src="image.smallUrl" :alt="image.alt"
-             class="h-full w-full object-cover filter hover:brightness-75 duration-200 cursor-pointer">
+             class="h-full w-full object-cover filter hover:brightness-75 duration-200 cursor-pointer"/>
       </div>
 
       <cool-light-box :items="imagesToShow.map(i => i.largeUrl)" :index="index" @close="index=null"/>
