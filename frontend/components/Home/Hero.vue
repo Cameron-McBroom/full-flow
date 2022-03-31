@@ -32,7 +32,7 @@ export default {
 <style scoped>
 
 .hero-image {
-  background-image: url("../../assets/hero-image-home.jpg");
+  background-image: url("/hero-image-home.jpg");
   min-height: 40vh;
   height: 50%;
   background-position: center;
@@ -43,7 +43,7 @@ export default {
 
 @media only screen and (max-width: 768px) {
   .hero-image {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),  url("../../assets/hero-image-home.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),  url("/hero-image-home.jpg");
     min-height: max(40vh, 400px);
     height: 50%;
     background-position: center;

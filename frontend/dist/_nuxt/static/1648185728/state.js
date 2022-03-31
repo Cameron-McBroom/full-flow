@@ -1,1 +1,0 @@
-window.__NUXT__=(function(a,b){return {staticAssetsBase:"\u002F_nuxt\u002Fstatic\u002F1648185728",layout:"default",error:a,serverRendered:true,routePath:b,config:{axios:{baseURL:"https:\u002F\u002Fvast-atoll-40641.herokuapp.com\u002Fapi"},_app:{basePath:b,assetsPath:"\u002F_nuxt\u002F",cdnURL:a}}}}(null,"\u002F"));

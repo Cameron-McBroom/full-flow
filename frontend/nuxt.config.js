@@ -31,12 +31,13 @@ export default {
     // Global CSS: https://go.nuxtjs.dev/config-css
     css: [
         '@fortawesome/fontawesome-svg-core/styles.css',
+        '~/assets/main.css'
     ],
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [
         '~/plugins/v-mq.js',
-        '~/plugins/v-markdown.js',
+        // '~/plugins/v-markdown.js',
     ],
 
     // Auto import components: https://go.nuxtjs.dev/config-components
@@ -52,11 +53,30 @@ export default {
     // Modules: https://go.nuxtjs.dev/config-modules
     modules: [
         '@nuxtjs/axios',
+        '@nuxtjs/markdownit'
     ],
 
-    // Build Configuration: https://go.nuxtjs.dev/config-build
-    build: {
+    markdownit: {
+        preset: 'default',
+        linkify: true,
+        breaks: true,
+        injected: true
     },
+
+    // Build Configuration: https://go.nuxtjs.dev/config-build
+    // build: {
+    //     optimization: {
+    //         splitChunks: {
+    //             cacheGroups: {
+    //                 vendor: {
+    //                     test: /[\\/]node_modules[\\/](!markdown-it)[\\/]/,
+    //                     name: 'vendor',
+    //                     chunks: 'all',
+    //                 }
+    //             }
+    //         }
+    //     }
+    // },
 
     fontawesome: {
         icons: {

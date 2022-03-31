@@ -2,7 +2,7 @@
   <div class="max-w-screen-lg mx-auto text-center" v-if="filteredService">
     <div class="pt-16 md:pt-24 text-left mx-5">
       <h1 class="text-4xl font-bold mb-4"> {{ filteredService.attributes.name }} </h1>
-      <vue-markdown class="text-base markdown"> {{ filteredService.attributes.descriptionLong }}</vue-markdown>
+      <div class="text-base markdown" v-html="filteredService.attributes.descriptionLong"></div>
     </div>
 
     <div class="pt-16 md:pt-24 mx-5">
@@ -21,6 +21,7 @@
 <script>
 import QuoteSection from "@/components/Home/QuoteSection";
 import ReviewSection from "@/components/Home/ReviewSection";
+
 export default {
   components: {ReviewSection, QuoteSection},
   head() {
@@ -40,7 +41,7 @@ export default {
        return this.filteredService?.attributes?.seo?.attributes || null
     }
   },
-  async asyncData({ params, redirect, $axios }) {
+  async asyncData({ params, redirect, $axios, $md }) {
     const services = await $axios.$get('/services?populate=seo').then(res => {
       const {data} = res;
       return data.map(i => i)
@@ -49,6 +50,8 @@ export default {
     const filteredService = services.find(i => i.attributes.name.replace(" ", "-").toLowerCase() === params.service);
 
     if (!filteredService) redirect('/')
+
+    filteredService.attributes.descriptionLong = $md.render(filteredService.attributes.descriptionLong || "");
 
     return {filteredService}
   }
