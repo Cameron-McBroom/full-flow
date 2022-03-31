@@ -27,84 +27,98 @@ export default {
   src: url(~assets/fonts/NunitoSans-Black.ttf) format("truetype");
   font-weight: 900;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Nunito Sans";
   src: url(~assets/fonts/NunitoSans-ExtraBold.ttf) format("truetype");
   font-weight: 800;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Nunito Sans";
   src: url(~assets/fonts/NunitoSans-Bold.ttf) format("truetype");
   font-weight: bold;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Nunito Sans";
   src: url(~assets/fonts/NunitoSans-SemiBold.ttf) format("truetype");
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Nunito Sans";
   src: url(~assets/fonts/NunitoSans-Regular.ttf) format("truetype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Nunito Sans";
   src: url(~assets/fonts/NunitoSans-Light.ttf) format("truetype");
-  font-weight: 400;
+  font-weight: 300;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Nunito Sans";
   src: url(~assets/fonts/NunitoSans-ExtraLight.ttf) format("truetype");
-  font-weight: 300;
+  font-weight: 200;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Nunito Sans";
   src: url(~assets/fonts/NunitoSans-BlackItalic.ttf) format("truetype");
   font-weight: 900;
   font-style: italic;
+  font-display: swap;
 }
 @font-face {
   font-family: "Nunito Sans";
   src: url(~assets/fonts/NunitoSans-ExtraBoldItalic.ttf) format("truetype");
   font-weight: 800;
   font-style: italic;
+  font-display: swap;
 }
 @font-face {
   font-family: "Nunito Sans";
   src: url(~assets/fonts/NunitoSans-BoldItalic.ttf) format("truetype");
   font-weight: bold;
   font-style: italic;
+  font-display: swap;
 }
 @font-face {
   font-family: "Nunito Sans";
   src: url(~assets/fonts/NunitoSans-SemiBoldItalic.ttf) format("truetype");
   font-weight: 600;
   font-style: italic;
+  font-display: swap;
 }
 @font-face {
   font-family: "Nunito Sans";
   src: url(~assets/fonts/NunitoSans-Italic.ttf) format("truetype");
   font-weight: normal;
   font-style: italic;
+  font-display: swap;
 }
 @font-face {
   font-family: "Nunito Sans";
   src: url(~assets/fonts/NunitoSans-LightItalic.ttf) format("truetype");
-  font-weight: 400;
+  font-weight: 300;
   font-style: italic;
+  font-display: swap;
 }
 @font-face {
   font-family: "Nunito Sans";
   src: url(~assets/fonts/NunitoSans-ExtraLightItalic.ttf) format("truetype");
-  font-weight: 300;
+  font-weight: 200;
   font-style: italic;
+  font-display: swap;
 }
 
 /*Source Serif Font*/
@@ -113,84 +127,98 @@ export default {
   src: url(~assets/fonts/NunitoSans-Black.ttf) format("truetype");
   font-weight: 900;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Source Serif Pro";
   src: url(~assets/fonts/SourceSerifPro-Black.ttf) format("truetype");
   font-weight: 800;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Source Serif Pro";
   src: url(~assets/fonts/SourceSerifPro-Bold.ttf) format("truetype");
   font-weight: bold;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Source Serif Pro";
   src: url(~assets/fonts/SourceSerifPro-SemiBold.ttf) format("truetype");
   font-weight: 600;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Source Serif Pro";
   src: url(~assets/fonts/SourceSerifPro-Regular.ttf) format("truetype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Source Serif Pro";
   src: url(~assets/fonts/SourceSerifPro-Light.ttf) format("truetype");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Source Serif Pro";
   src: url(~assets/fonts/SourceSerifPro-ExtraLight.ttf) format("truetype");
   font-weight: 300;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Source Serif Pro";
   src: url(~assets/fonts/SourceSerifPro-BlackItalic.ttf) format("truetype");
   font-weight: 900;
   font-style: italic;
+  font-display: swap;
 }
 @font-face {
   font-family: "Source Serif Pro";
   src: url(~assets/fonts/SourceSerifPro-ExtraLightItalic.ttf) format("truetype");
   font-weight: 800;
   font-style: italic;
+  font-display: swap;
 }
 @font-face {
   font-family: "Source Serif Pro";
   src: url(~assets/fonts/SourceSerifPro-BoldItalic.ttf) format("truetype");
   font-weight: bold;
   font-style: italic;
+  font-display: swap;
 }
 @font-face {
   font-family: "Source Serif Pro";
   src: url(~assets/fonts/SourceSerifPro-SemiBoldItalic.ttf) format("truetype");
   font-weight: 600;
   font-style: italic;
+  font-display: swap;
 }
 @font-face {
   font-family: "Source Serif Pro";
   src: url(~assets/fonts/SourceSerifPro-Italic.ttf) format("truetype");
   font-weight: normal;
   font-style: italic;
+  font-display: swap;
 }
 @font-face {
   font-family: "Source Serif Pro";
   src: url(~assets/fonts/SourceSerifPro-LightItalic.ttf) format("truetype");
   font-weight: 400;
   font-style: italic;
+  font-display: swap;
 }
 @font-face {
   font-family: "Source Serif Pro";
   src: url(~assets/fonts/SourceSerifPro-ExtraLightItalic.ttf) format("truetype");
   font-weight: 300;
   font-style: italic;
+  font-display: swap;
 }
 
 html {
