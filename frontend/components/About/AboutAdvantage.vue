@@ -3,10 +3,10 @@
 
     <div class="flex-1 text-left">
       <h2>{{title}}</h2>
-      <vue-markdown> {{markdown}} </vue-markdown>
+      <div class="text-base markdown" v-html="markdownHTML"></div>
     </div>
 
-    <div  class="flex-1">
+    <div class="flex-1">
       <img :src="img.url" :alt="img.alt">
     </div>
 
@@ -21,6 +21,11 @@ export default {
     markdown: String,
     img: Object,
     flip: Boolean
+  },
+  computed: {
+    markdownHTML() {
+      return this.$md.render(this.markdown || "");
+    }
   }
 }
 </script>

@@ -26,19 +26,24 @@ export default {
   components: {ReviewSection, QuoteSection},
   head() {
     return {
-      title: this.seo?.title | 'Service | Uplift Painting',
+      title: this.seo?.metaTitle || 'Service | Uplift Painting',
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: this.seo?.description | ''
+          content: this.seo?.metaDescription || ''
         }
       ]
     }
   },
+  data() {
+    return {
+      filteredService: null,
+    }
+  },
   computed: {
     seo() {
-       return this.filteredService?.attributes?.seo?.attributes || null
+       return this.filteredService?.attributes?.seo || null
     }
   },
   async asyncData({ params, redirect, $axios, $md }) {
@@ -61,7 +66,7 @@ export default {
 <style>
 
 .markdown h1,h2,h3,h4,h5 {
-  @apply mb-3
+  @apply my-3
 }
 
 .markdown p {
@@ -70,6 +75,10 @@ export default {
 
 .markdown ul{
   @apply list-inside list-disc
+}
+
+.markdown a {
+  @apply underline
 }
 
 </style>

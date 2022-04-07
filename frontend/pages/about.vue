@@ -49,13 +49,14 @@ export default {
             title: item.attributes.title,
             description: item.attributes.description,
             img: {
-              url: item.attributes.image.data.attributes.url,
-              alt: item.attributes.image.data.attributes.alt,
+              url: item.attributes.supportingImage.data.attributes.url,
+              alt: item.attributes.supportingImage.data.attributes.alt,
             }
           }
         })
       }
       catch (e) {
+        console.log(e);
         this.advantages = []
       }
     }

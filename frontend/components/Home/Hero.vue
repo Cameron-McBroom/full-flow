@@ -1,8 +1,8 @@
 <template>
   <div class="h-full">
     <div class="hero-image h-full">
-      <div class="max-w-screen-lg mx-auto h-full text-white md:text-cblue">
-        <div class="md:bg-white p-5 max-w-sm absolute top-1/4  -translate-y-1/2">
+      <div class="content-container max-w-screen-lg mx-auto text-white md:text-cblue">
+        <div class="md:bg-white p-5 max-w-sm absolute top-1/2 transform -translate-y-1/2">
           <h1 class="text-4xl font-bold"> {{ headline }} </h1>
           <p class="text-xl my-6"> {{ subheadline }} </p>
           <button class="btn-primary-red" @click="$emit('main-action')"> Get a free quote</button>
@@ -31,9 +31,13 @@ export default {
 
 <style scoped>
 
+.content-container {
+  height: 50vh;
+}
+
 .hero-image {
   background-image: url("/hero-image-home.jpg");
-  min-height: 40vh;
+  min-height: 50vh;
   height: 50%;
   background-position: center;
   background-repeat: no-repeat;

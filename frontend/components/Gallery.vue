@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="!imagesToShow.length">
-      <p class="text-lg">Sadly no images for this category. See the gallery for all our images.</p>
+      <p class="text-lg">Sorry, our website is new and we are still adding images for all our services. Click below to see our full gallery</p>
     </div>
 
     <div v-else class="grid grid-cols-2 md:grid-cols-3 grid-flow-row-dense gap-3">
