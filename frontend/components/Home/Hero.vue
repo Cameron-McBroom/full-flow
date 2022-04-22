@@ -37,7 +37,7 @@ export default {
 
 .hero-image {
   background-image: url("/hero-image-home.jpg");
-  min-height: 50vh;
+  min-height: max(50vh, 500px);
   height: 50%;
   background-position: center;
   background-repeat: no-repeat;

@@ -12,10 +12,10 @@
     "pg-connection-string": "^2.5.0",
     "sqlite3": "5.0.2"
   },
-  "name": "backend",
+  "name": "full-flow-backend",
   "private": true,
   "version": "0.1.0",
-  "description": "A Strapi application backend",
+  "description": "Full Flow strapi application backend",
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
@@ -24,7 +24,7 @@
   },
   "devDependencies": {},
   "author": {
-    "name": "A Strapi developer"
+    "name": "Cameron Mcbroom"
   },
   "strapi": {
     "uuid": "ef802b00-807b-4fb9-8529-11cbc2539bca",
