@@ -3,12 +3,12 @@
     <hero @main-action="scrollToQuoteForm"/>
 
     <!-- Main Content of Page   -->
-    <div class="max-w-screen-lg mx-auto text-center py-24 md:py-32">
-      <gallery-section/>
-      <review-section class="pt-24 md:pt-32"/>
+    <div class="max-w-screen-lg mx-auto text-center py-24 md:py-24">
+      <review-section/>
+      <photo-section class="pt-24 md:pt-32"/>
+      <advantage-section class="pt-24 md:pt-32"/>
+      <call-section  class="pt-24 md:pt-32"/>
       <service-section class="pt-24 md:pt-32"/>
-      <matt-section class="pt-24 md:pt-32"/>
-      <question-section class="pt-24 md:pt-32"/>
       <quote-section class="pt-24 md:pt-32"/>
     </div>
 
@@ -25,11 +25,17 @@ import QuestionSection from "@/components/Home/QuestionSection";
 import QuoteSection from "@/components/Home/QuoteSection";
 
 import global from "@/mixins/global";
+import PhotoSection from "~/components/Home/PhotoSection";
+import AdvantageSection from "~/components/Home/AdvantageSection";
+import CallSection from "~/components/Home/CallSection";
 
 export default {
   name: 'IndexPage',
   mixins: [global],
   components: {
+    CallSection,
+    AdvantageSection,
+    PhotoSection,
     QuoteSection,
     QuestionSection,
     MattSection,

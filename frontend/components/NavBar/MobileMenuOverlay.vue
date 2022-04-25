@@ -1,59 +1,59 @@
 <template>
   <div ref="myNav"
-       class="z-10 h-0 w-full fixed left-0 top-0 overflow-x-hidden transition-all duration-500 bg-gray-200 bg-opacity-100">
+       class="z-10 h-0 w-full fixed left-0 top-0 overflow-x-hidden transition-all duration-500 bg-ff-primary-blue bg-opacity-100">
 
     <!-- Button to close the overlay navigation -->
-    <button class="absolute text-4xl text-gray-400 text-gray-100 top-4 right-4" @click.prevent="closeNav">&times;
+    <button class="absolute text-4xl text-white opacity-60 top-4 right-4" @click.prevent="closeNav">&times;
     </button>
 
     <!-- Overlay content -->
-    <div class="p-5 flex flex-col w-full text-left text-cblue text-2xl duration-500">
+    <div class="p-5 flex flex-col w-full text-left text-cblue text-xl duration-500">
       <div class="mx-auto mb-5">
-        <img :src="logoUrl" alt="logo" class="w-52 mb-2">
-        <div class="flex gap-1.5 opacity-80 justify-between text-base">
-          <a href="https://www.facebook.com/Upliftpaintinganddecorating/">
+        <img :src="$parseUrl($store.state.global.logo)" alt="logo" class="w-24 mb-2 mx-auto">
+        <div class="flex gap-3 opacity-80 justify-between text-base">
+          <a href="https://www.facebook.com/fullflowpc/">
             <font-awesome-icon :icon="faFacbook"/>
           </a>
-          <a href="https://www.instagram.com/upliftpaintinganddecorating/">
+          <a href="https://www.instagram.com/fullflowpc/">
             <font-awesome-icon :icon="faInstagram"/>
           </a>
-          <a href="tel:+61412857681">
+          <a :href="'tel:+61' + $store.state.global.contactNumber.slice(1)">
             <font-awesome-icon :icon="faPhone"/>
           </a>
-          <a href="sms:+61412857681">
+          <a :href="'sms:+61' + $store.state.global.contactNumber.slice(1)">
             <font-awesome-icon :icon="faMessage"/>
           </a>
-          <a href="mailto:info@upliftpainting.com.au">
+          <a :href="'mailto:' + $store.state.global.contactEmail">
             <font-awesome-icon :icon="faAt"/>
           </a>
         </div>
       </div>
 
       <nuxt-link to="/">
-        <div class="flex justify-between items-center py-5 border-b-2 border-t-2 border-gray-300">
+        <div class="text-white flex justify-between items-center py-5 border-b-2 border-t-2 border-white border-opacity-10">
           <span> Home </span>
-          <font-awesome-icon :icon="faChevronRight" class="text-lg text-gray-400"/>
+          <font-awesome-icon :icon="faChevronRight" class="text-md text-white opacity-20"/>
         </div>
       </nuxt-link>
 
       <nuxt-link to="/gallery">
-        <div class="flex justify-between items-center py-5 border-b-2 border-gray-300">
+        <div class="flex justify-between items-center py-5 border-b-2 border-white border-opacity-10">
           <span> Gallery </span>
-          <font-awesome-icon :icon="faChevronRight" class="text-lg text-gray-400"/>
+          <font-awesome-icon :icon="faChevronRight" class="text-md text-white opacity-20"/>
         </div>
       </nuxt-link>
 
       <nuxt-link to="/about">
-        <div class="flex justify-between items-center py-5 border-b-2 border-gray-300">
+        <div class="flex justify-between items-center py-5 border-b-2 border-white border-opacity-10">
           <span> About </span>
-          <font-awesome-icon :icon="faChevronRight" class="text-lg text-gray-400"/>
+          <font-awesome-icon :icon="faChevronRight" class="text-md text-white opacity-20"/>
         </div>
       </nuxt-link>
 
-      <div class="py-5 border-b-2 border-gray-300">
+      <div class="py-5 border-b-2 border-white border-opacity-10">
         <div class="flex justify-between items-center mb-2">
           <span> Services </span>
-          <font-awesome-icon :icon="faChevronRight" class="text-lg text-gray-400 fa-rotate-90"/>
+          <font-awesome-icon :icon="faChevronRight" class="text-md text-white opacity-20 fa-rotate-90"/>
         </div>
         <div class="flex flex-col">
           <nuxt-link

@@ -1,6 +1,7 @@
 <template>
   <div class="mx-5 md:mx-0">
-    <h2 class="font-bold text-3xl pb-10 md:pb-20" > What our customers have to say </h2>
+    <img src="~assets/stars.svg" alt="stars" class="mx-auto">
+    <h2 class="font-bold text-3xl pb-10 md:pb-20" > Rated 5/5 on Google </h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5 items-start">
 
 
@@ -8,8 +9,13 @@
           :name="review.name"
           :content="review.content"
           :title="review.title"
+          :image="review.image"
           :key="review.content"/>
 
+    </div>
+
+    <div class="mt-10 underline">
+      <a href="https://g.page/r/CbaqrewqrxxPEBA" target="_blank">Click here to see all reviews on google</a>
     </div>
   </div>
 </template>
@@ -28,13 +34,14 @@ export default {
     }
   },
   async fetch() {
-    const {data: res} = await this.$axios.get('/reviews');
+    const {data: res} = await this.$axios.get('/reviews?populate=userImage');
 
     this.reviews = res.data.map(i => {
       return {
         name: i.attributes.personName,
         content: i.attributes.content,
-        title: i.attributes.title
+        title: i.attributes.title,
+        image: i.attributes.userImage.data.attributes.url
       }
     })
   }

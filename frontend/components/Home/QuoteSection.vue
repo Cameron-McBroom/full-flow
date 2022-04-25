@@ -1,26 +1,10 @@
 <template>
-  <div id="quoteSection" class="mx-5 md:mx-0">
-    <h2 class="text-3xl font-bold pb-10 md:pb-20"> Get in touch for a free quote </h2>
-    
-    <div class="flex flex-col md:flex-row text-left gap-5">
-      <div class="pb-5 flex flex-col items-start gap-2">
-        <img
-            src="https://res.cloudinary.com/cmcbroom/image/upload/v1648263608/uplift_painting_decorating_logo_design_1_f77c4f2ce0.webp?updated_at=2022-03-26T03:08:29.530Z"
-            alt="logo"
-          class="w-40">
-        <h3 class="font-bold text-xl">Mathew Vella</h3>
-        <p>Licence No. 345470</p>
-        <p>Kellyville Ridge NSW 2155</p>
-        <p class="underline"><a href="tel:+61412857681">0412 857 681</a></p>
-        <p class="underline"><a href="mailto:upliftpaintinganddecorating@gmail.com">upliftpaintinganddecorating@gmail.com</a></p>
-        <p>100% Satisfaction Guarantee</p>
-      </div>
+  <div id="quoteSection" class="px-5 md:px-0 max-w-screen-md mx-auto">
+    <h2 class="text-3xl font-bold"> Get your free, no obligation quote </h2>
+    <p class="text-lg pb-10 md:pb-20">Once you fill in the form we will contact you to discuss more about how we can help you, when you need the job complete and give you a price estimate.</p>
 
-      <request-form class="flex-1"/>
-      
-      
-    </div>
-    
+
+    <request-form class="flex-1"/>
     
   </div>
 </template>

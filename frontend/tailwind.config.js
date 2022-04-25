@@ -15,8 +15,9 @@ module.exports = {
     },
     extend: {
       colors: {
-        cblue: '#1A174A',
-        cred: '#DE0404'
+        "ff-text": '#1A174A',
+        "ff-primary-blue": '#0799EB',
+        "ff-secondary-blue": '#07C2EB',
       },
       transitionProperty: {
         'height': 'height'

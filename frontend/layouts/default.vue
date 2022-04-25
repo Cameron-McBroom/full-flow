@@ -1,6 +1,6 @@
 <template>
   <div class="bg-gray-100 text-cblue">
-    <header class="pb-16">
+    <header>
       <nav-bar></nav-bar>
     </header>
     <nuxt/>

@@ -38,6 +38,7 @@ export default {
     plugins: [
         '~/plugins/v-mq.js',
         // '~/plugins/v-markdown.js',
+        '~/plugins/parse-url.js'
     ],
 
     // Auto import components: https://go.nuxtjs.dev/config-components

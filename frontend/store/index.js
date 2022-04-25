@@ -1,5 +1,6 @@
 
 export const state = () => ({
+    global: {},
     services: [],
     serviceAreas: [],
     images: {}
@@ -19,11 +20,24 @@ export const mutations = {
         payload.forEach(i => {
             state.images[i.id] = i
         })
-
+    },
+    setGlobal(state, payload) {
+        state.global = payload
+        state.global.logo = payload.logo.data.attributes.url
     }
 }
 
 export const actions = {
+
+    async fetchGlobal({ commit }) {
+        try {
+            const res = await this.$axios.$get("/global?populate=logo");
+            commit('setGlobal', res.data.attributes);
+        } catch (e) {
+            console.log("[Vuex] Error fetching global site info", e)
+        }
+    },
+
     async fetchImages({ commit }) {
         try {
             const res = await this.$axios.$get("/images?populate=image")
@@ -69,7 +83,8 @@ export const actions = {
             const services = res.data.map(i => {
                 return {
                     path: i.attributes.name.replace(' ', '-').toLowerCase(),
-                    name: i.attributes.name
+                    name: i.attributes.name,
+                    shortName: i.attributes.shortName
                 }
             })
             commit('setServices', services);
@@ -98,5 +113,6 @@ export const actions = {
         await context.dispatch('fetchServices');
         await context.dispatch('fetchServiceAreas');
         await context.dispatch('fetchImages');
+        await context.dispatch('fetchGlobal');
     }
 }

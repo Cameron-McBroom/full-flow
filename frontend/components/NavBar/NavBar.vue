@@ -1,5 +1,5 @@
 <template>
-  <nav class="fixed top-0 px-2 py-1 w-full border-b-2 bg-gray-100 dark:bg-gray-900 sm:px-0 dark:border-gray-600 z-10">
+  <nav class="absolute top-0 px-2 py-2 w-full bg-transparent dark:bg-gray-900 sm:px-0 z-10 text-white">
     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-lg">
 
       <!-- Mobile call icon when small      -->
@@ -17,18 +17,13 @@
 
       <nuxt-link to="/"  class="text-center">
         <div class="flex items-center">
-          <img :src="logoUrl" alt="logo" class="w-32 p-2 mr-5 md:mr-0">
+          <img src="~assets/Logo.svg" alt="logo" class="h-20 p-2 mr-5 md:mr-0">
         </div>
 <!--          <p class="pr-3 m-0 font-mono text-lg font-extrabold md:text-2xl md:pr-0">Return Evolved</p></div>-->
       </nuxt-link>
 
       <div class="flex">
-        <div class="flex justify-between md:ml-5 md:order-2">
-          <button @click="scrollToQuoteForm"
-            class="hidden md:inline-block btn-primary-blue">
-            Free Quote
-          </button>
-
+        <div class="flex justify-between md:order-2">
           <button @click="openMenu" class="px-2 py-1 md:hidden">
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
@@ -40,7 +35,7 @@
 
         <div class="hidden justify-between items-center w-full md:block slide-in-menu md:flex md:w-auto md:order-1 py-2">
 
-          <ul class="flex flex-col items-center mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+          <ul class="flex flex-col items-center mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:absolute md:transform md:left-1/2 md:-translate-x-1/2">
             <li>
               <nuxt-link to="/" class="btn-menu">Home</nuxt-link>
             </li>
@@ -59,10 +54,15 @@
             </li>
           </ul>
         </div>
-
         <mobile-menu-overlay ref="menuOverlay" @closed="mobileMenuShowing = false" :logoUrl="logoUrl"/>
 
       </div>
+      <button @click="scrollToQuoteForm"
+              class="hidden md:inline-block bg-black bg-opacity-5 px-3 pt-1 font-bold rounded">
+        <span class="block">
+        Free Quote </span>
+        0426 437 739
+      </button>
     </div>
   </nav>
 </template>

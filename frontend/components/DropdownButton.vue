@@ -4,7 +4,7 @@
       {{ btnText }}
       <font-awesome-icon :icon="faCaretDown"/>
     </button>
-    <div class="content hidden absolute bg-gray-100 shadow-lg z-10 flex-col transition-all duration-200 border-gray-200 border">
+    <div class="content hidden text-ff-text absolute rounded bg-gray-100 shadow-lg z-10 flex-col transition-all duration-200 border-gray-200 border">
       <slot></slot>
     </div>
   </div>

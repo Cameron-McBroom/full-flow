@@ -19,21 +19,13 @@
       "repeatable": false,
       "component": "shared.seo"
     },
-    "heroImage": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "headline": {
       "type": "string"
     },
     "subheadline": {
+      "type": "string"
+    },
+    "buttonCTA": {
       "type": "string"
     }
   }
