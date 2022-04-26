@@ -40,8 +40,7 @@
       </div>
 
       <p class="mt-5 py-2 border-t-2 border-white border-opacity-10 text-center">Designed and Developed by <a
-          href="https://returnevolved.com" class="font-bold">Return Evolved</a> | Copyright 2022 Uplift Painting &
-        Decorating</p>
+          href="https://www.returnevolved.com" class="font-bold">Return Evolved</a> | Copyright 2022 Full Flow Pressure Cleaning</p>
 
     </div>
   </div>
