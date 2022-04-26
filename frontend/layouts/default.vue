@@ -1,5 +1,5 @@
 <template>
-  <div id="main-layout" class="bg-gray-100 text-ff-text">
+  <div id="main-layout" class="bg-transparent text-ff-text overflow-x-hidden">
     <header>
       <nav-bar></nav-bar>
     </header>
