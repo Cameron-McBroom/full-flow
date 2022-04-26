@@ -1,6 +1,6 @@
 <template>
   <div class="mx-5 md:mx-0">
-    <img src="~assets/stars.svg" alt="stars" class="mx-auto">
+    <img src="~assets/stars.svg" alt="stars" class="mx-auto w-48">
     <h2 class="font-bold text-3xl pb-10 md:pb-20" > Rated 5/5 on Google </h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5 items-start">
 

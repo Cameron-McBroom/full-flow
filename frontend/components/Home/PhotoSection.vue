@@ -24,21 +24,13 @@ export default {
       images: []
     }
   },
-  methods: {
-    convertUrl(url) {
-      if (url.indexOf('http://') === 0 || url.indexOf('https://') === 0) {
-        return url
-      }
-      return "http://localhost:1337" + url
-    }
-  },
   async fetch() {
-    const {data: res} = await this.$axios.get('/home-page-images?populate=image');
+    const {data: res} = await this.$axios.get('/joined-before-after-images?populate=image');
 
     this.images = res.data.map(i => {
       return {
         title: i.attributes.title,
-        image: this.convertUrl(i.attributes.image.data.attributes.url)
+        image: this.$parseUrl(i.attributes.image.data.attributes.url)
       }
     })
   }

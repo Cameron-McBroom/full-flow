@@ -1,8 +1,8 @@
 <template>
   <div class="max-w-screen-lg mx-auto text-center py-24 md:py-32">
-    <div class="mb-24 md:mb-32 px-2">
-      <h1 class="text-4xl">The Uplift Gallery</h1>
-      <p class="text-xl mt-2"> See our work quality and get some ideas for your next project</p>
+    <div class="mb-16 md:mb-24 px-2">
+      <h1 class="text-4xl">The Full Flow Gallery</h1>
+      <p class="text-xl mt-2"> See how you might be able to bring your exterior area back to life </p>
     </div>
 
     <div class="hidden md:grid grid-cols-3 gap-5 items-start mb-24 md:mb-32">
@@ -12,7 +12,7 @@
              :alt="imageWithId(id).alt"
              :key="id"
              @click="index=indexOfImage(id)"
-             class="filter hover:brightness-75 duration-200 cursor-pointer">
+             class="filter hover:brightness-75 duration-200 cursor-pointer rounded overflow-hidden">
       </div>
 
     </div>
@@ -25,11 +25,13 @@
              :alt="imageWithId(id).alt"
              :key="id"
              @click="index=indexOfImage(id)"
-             class="filter hover:brightness-75 duration-200 cursor-pointer">
+             class="filter hover:brightness-75 duration-200 cursor-pointer rounded overflow-hidden">
       </div>
     </div>
 
-    <quote-section/>
+    <quote-section class="mb-24 md:mb-32"/>
+
+    <service-section/>
 
     <cool-light-box :items="orderedImages.map(i => i.url)" :index="index" @close="index=null"/>
 
@@ -42,9 +44,10 @@ import global from "@/mixins/global";
 
 import CoolLightBox from "vue-cool-lightbox";
 import "vue-cool-lightbox/dist/vue-cool-lightbox.min.css";
+import ServiceSection from "@/components/Home/ServiceSection";
 
 export default {
-  components: {QuoteSection, CoolLightBox},
+  components: {ServiceSection, QuoteSection, CoolLightBox},
   mixins: [global],
   data() {
     return {

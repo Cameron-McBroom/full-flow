@@ -37,25 +37,25 @@
       </nuxt-link>
 
       <nuxt-link to="/gallery">
-        <div class="flex justify-between items-center py-5 border-b-2 border-white border-opacity-10">
+        <div class="text-white flex justify-between items-center py-5 border-b-2 border-white border-opacity-10">
           <span> Gallery </span>
           <font-awesome-icon :icon="faChevronRight" class="text-md text-white opacity-20"/>
         </div>
       </nuxt-link>
 
       <nuxt-link to="/about">
-        <div class="flex justify-between items-center py-5 border-b-2 border-white border-opacity-10">
+        <div class="text-white flex justify-between items-center py-5 border-b-2 border-white border-opacity-10">
           <span> About </span>
           <font-awesome-icon :icon="faChevronRight" class="text-md text-white opacity-20"/>
         </div>
       </nuxt-link>
 
       <div class="py-5 border-b-2 border-white border-opacity-10">
-        <div class="flex justify-between items-center mb-2">
+        <div class="text-white flex justify-between items-center mb-2">
           <span> Services </span>
           <font-awesome-icon :icon="faChevronRight" class="text-md text-white opacity-20 fa-rotate-90"/>
         </div>
-        <div class="flex flex-col">
+        <div class="text-white flex flex-col">
           <nuxt-link
               v-for="service in $store.state.services"
               :to="`/service/${service.path}`"

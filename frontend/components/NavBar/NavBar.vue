@@ -1,5 +1,5 @@
 <template>
-  <nav class="absolute top-0 px-2 py-2 w-full bg-transparent dark:bg-gray-900 sm:px-0 z-10 text-white">
+  <nav ref="navBar" class="fixed top-0 px-2 py-1 w-full dark:bg-gray-900 sm:px-0 z-10 text-ff-text transition-all border-b-2 border-transparent">
     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-lg">
 
       <!-- Mobile call icon when small      -->
@@ -17,7 +17,7 @@
 
       <nuxt-link to="/"  class="text-center">
         <div class="flex items-center">
-          <img src="~assets/Logo.svg" alt="logo" class="h-20 p-2 mr-5 md:mr-0">
+          <img src="~assets/Logo.svg" alt="logo" class="h-16 p-2 mr-5 md:mr-0">
         </div>
 <!--          <p class="pr-3 m-0 font-mono text-lg font-extrabold md:text-2xl md:pr-0">Return Evolved</p></div>-->
       </nuxt-link>
@@ -25,7 +25,7 @@
       <div class="flex">
         <div class="flex justify-between md:order-2">
           <button @click="openMenu" class="px-2 py-1 md:hidden">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <svg class="w-6 h-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
                     d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
                     clip-rule="evenodd"></path>
@@ -58,7 +58,7 @@
 
       </div>
       <button @click="scrollToQuoteForm"
-              class="hidden md:inline-block bg-black bg-opacity-5 px-3 pt-1 font-bold rounded">
+              class="text-sm hidden md:inline-block bg-black bg-opacity-5 px-3 pt-1 font-bold rounded">
         <span class="block">
         Free Quote </span>
         0426 437 739
@@ -94,9 +94,23 @@ export default {
     },
     services() {
       return this.$store.state.services
-    }
+    },
   },
   methods: {
+    addScrollClasses() {
+      if (window.scrollY >= 100) {
+        this.$refs.navBar.classList.add('bg-gray-100')
+        this.$refs.navBar.classList.add('border-gray-200')
+        this.$refs.navBar.classList.remove('border-transparent')
+        this.$refs.navBar.classList.remove('bg-transparent')
+      }
+      else {
+        this.$refs.navBar.classList.remove('bg-gray-100')
+        this.$refs.navBar.classList.remove('border-gray-200')
+        this.$refs.navBar.classList.add('border-transparent')
+        this.$refs.navBar.classList.add('bg-transparent')
+      }
+    },
     openMenu() {
       if (this.mobileMenuShowing) {
         this.$refs.menuOverlay.closeNav();
@@ -118,7 +132,7 @@ export default {
         console.log(i.attributes.name);
 
         return {
-          path: i.attributes.name.replace(' ', '-').toLowerCase(),
+          path: i.attributes.name.replace(/ /g, '-').toLowerCase(),
           name: i.attributes.name
         }
       })
@@ -126,6 +140,10 @@ export default {
       console.log(this.services);
     }
   },
+  mounted() {
+    window.addEventListener('scroll', this.addScrollClasses)
+  },
+
   async fetch() {
     await this.getLogoUrl();
     // await this.fetchServices();

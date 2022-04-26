@@ -1,9 +1,9 @@
 <template>
-  <div class="bg-gray-100 text-cblue">
+  <div id="main-layout" class="bg-gray-100 text-ff-text">
     <header>
       <nav-bar></nav-bar>
     </header>
-    <nuxt/>
+    <nuxt id="nuxt-container"/>
     <footer class="bg-cblue text-white">
       <footer-bar/>
 

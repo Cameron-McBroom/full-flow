@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-ff-primary-blue">
-    <svg class="sm:-mb-10 md:-mb-16 lg:-mb-28 xl:-mb-36"
+  <div class="bg-gradient-to-b from-ff-secondary-blue to-ff-primary-blue">
+    <svg class="footer-wave sm:-mb-10 md:-mb-16 lg:-mb-28 xl:-mb-36"
         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill-opacity="1" d="M0,96L20,117.3C40,139,80,181,120,181.3C160,181,200,139,240,112C280,85,320,75,360,96C400,117,440,171,480,170.7C520,171,560,117,600,117.3C640,117,680,171,720,176C760,181,800,139,840,133.3C880,128,920,160,960,144C1000,128,1040,64,1080,80C1120,96,1160,192,1200,208C1240,224,1280,160,1320,128C1360,96,1400,96,1420,96L1440,96L1440,0L1420,0C1400,0,1360,0,1320,0C1280,0,1240,0,1200,0C1160,0,1120,0,1080,0C1040,0,1000,0,960,0C920,0,880,0,840,0C800,0,760,0,720,0C680,0,640,0,600,0C560,0,520,0,480,0C440,0,400,0,360,0C320,0,280,0,240,0C200,0,160,0,120,0C80,0,40,0,20,0L0,0Z"></path></svg>
 
     <div class="max-w-screen-lg mx-auto px-3 py-10 text-sm">
@@ -53,7 +53,7 @@ export default {
 </script>
 
 <style>
-svg {
+.footer-wave {
   fill: theme('colors.gray.100');
   scale: 101%;
 }

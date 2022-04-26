@@ -50,19 +50,19 @@ export const actions = {
                 return {
                     id: item.id,
                     alt: item.attributes.description,
-                    url: item.attributes.image.data.attributes.url,
+                    url: this.$parseUrl(item.attributes.image.data.attributes.url),
                     large: {
-                        url: largeImage.url,
+                        url: this.$parseUrl(largeImage.url),
                         width: largeImage.width,
                         height: largeImage.height
                     },
                     medium: {
-                        url: mediumImage.url,
+                        url: this.$parseUrl(mediumImage.url),
                         width: mediumImage.width,
                         height: mediumImage.height
                     },
                     small: {
-                        url: smallImage.url,
+                        url: this.$parseUrl(smallImage.url),
                         width: smallImage.width,
                         height: smallImage.height
                     },
@@ -79,12 +79,15 @@ export const actions = {
     async fetchServices({commit}) {
         // Fetch services
         try {
-            const res = await this.$axios.$get('/services');
+            const res = await this.$axios.$get('/services?populate=coverImage');
             const services = res.data.map(i => {
                 return {
-                    path: i.attributes.name.replace(' ', '-').toLowerCase(),
+                    path: i.attributes.name.replace(/ /g, '-').toLowerCase(),
                     name: i.attributes.name,
-                    shortName: i.attributes.shortName
+                    shortName: i.attributes.shortName,
+                    shortDesc: i.attributes.descriptionShort,
+                    longDesc: i.attributes.descriptionLong,
+                    imageUrl: this.$parseUrl(i.attributes.coverImage.data.attributes.formats.small.url)
                 }
             })
             commit('setServices', services);

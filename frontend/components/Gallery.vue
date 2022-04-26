@@ -6,9 +6,9 @@
 
     <div v-else class="grid grid-cols-2 md:grid-cols-3 grid-flow-row-dense gap-3">
 
-      <div v-for="(image, imgIndex) in imagesToShow" class="max-h-80" @click="index = imgIndex">
+      <div v-for="(image, imgIndex) in imagesToShow" class="h-40 md:h-60 lg:h-80" @click="index = imgIndex">
         <img :src="image.smallUrl" :alt="image.alt"
-             class="h-full w-full object-cover filter hover:brightness-75 duration-200 cursor-pointer"/>
+             class="rounded overflow-hidden  h-full w-full object-cover filter hover:brightness-75 duration-200 cursor-pointer"/>
       </div>
 
       <cool-light-box :items="imagesToShow.map(i => i.largeUrl)" :index="index" @close="index=null"/>
@@ -64,10 +64,10 @@ export default {
 
         return {
           alt: item.attributes.description,
-          url: item.attributes.image.data.attributes.url,
-          largeUrl: item.attributes.image.data.attributes.formats.medium.url,
-          mediumUrl: item.attributes.image.data.attributes.formats.medium.url,
-          smallUrl: smallImage.url,
+          url: this.$parseUrl(item.attributes.image.data.attributes.url),
+          largeUrl: this.$parseUrl(item.attributes.image.data.attributes.formats.medium.url),
+          mediumUrl: this.$parseUrl(item.attributes.image.data.attributes.formats.medium.url),
+          smallUrl: this.$parseUrl(smallImage.url),
           serviceIds: item.attributes.services.data.map(s => s.id)
         }
       });

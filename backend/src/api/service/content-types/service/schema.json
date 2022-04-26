@@ -45,6 +45,12 @@
     },
     "shortName": {
       "type": "string"
+    },
+    "joined_before_after_image": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::joined-before-after-image.joined-before-after-image",
+      "inversedBy": "services"
     }
   }
 }

@@ -1,24 +1,18 @@
 <template>
-  <div class="max-w-screen-lg mx-auto text-center py-24 md:py-32">
-    <h1 class="font-sans text-sm mb-3 font-normal">About Uplift Painting and Decorating</h1>
-    <matt-section class="mb-24 md:mb-32"/>
-
-    <div class="mb-24 md:mb-32 px-5 md:px-0" v-if="advantages.length">
-      <h2 class="mb-10 md:mb-20">What makes Uplift different?</h2>
-
-      <about-advantage
-          v-for="(advantage, index) in advantages"
-          :key="advantage.id"
-          class="mb-10 md:mb-20"
-          :title="advantage.title"
-          :img="advantage.img"
-          :markdown="advantage.description"
-          :flip="index % 2 === 0"/>
-
+  <div class="max-w-screen-lg mx-auto py-24 md:py-32">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div>
+        <h1 class="mb-3">About Full Flow Pressure Cleaning</h1>
+        <div class="text-base markdown text-left" v-html="about.content"></div>
+      </div>
+      <img v-if="about.teamImage" :src="about.teamImage.url" :alt="about.teamImage.alt" class="rounded-lg overflow-hidden">
     </div>
 
-    <quote-section/>
-
+    <div class="text-center">
+      <review-section class="mt-10 md:mt-20"/>
+      <service-section class="mt-10 md:mt-20"/>
+      <quote-section class="mt-10 md:mt-20"/>
+    </div>
   </div>
 </template>
 
@@ -28,36 +22,37 @@ import AboutAdvantage from "@/components/About/AboutAdvantage";
 import QuoteSection from "@/components/Home/QuoteSection";
 
 import global from "@/mixins/global";
+import ReviewSection from "@/components/Home/ReviewSection";
+import ServiceSection from "@/components/Home/ServiceSection";
 
 export default {
   name: "about",
   mixins: [global],
-  components: {QuoteSection, AboutAdvantage, MattSection},
+  components: {ServiceSection, ReviewSection, QuoteSection, AboutAdvantage, MattSection},
   data() {
     return {
-      advantages: []
+      about: {}
     }
   },
   methods: {
     async fetchAdvantages() {
       try {
-        const res = await this.$axios.$get('/about-advantages?populate=supportingImage');
+        const res = await this.$axios.$get('/about?populate=teamImage');
 
-        this.advantages = res.data.map(item => {
-          return {
-            id: item.id,
-            title: item.attributes.title,
-            description: item.attributes.description,
-            img: {
-              url: item.attributes.supportingImage.data.attributes.url,
-              alt: item.attributes.supportingImage.data.attributes.alt,
+        const item = res.data.attributes
+
+        this.about = {
+            content: this.$md.render(item.content || ""),
+            teamImage: {
+              url: this.$parseUrl(item.teamImage.data.attributes.url),
+              alt: item.teamImage.data.attributes.alt,
             }
           }
-        })
+
       }
       catch (e) {
         console.log(e);
-        this.advantages = []
+        this.about = {}
       }
     }
   },
