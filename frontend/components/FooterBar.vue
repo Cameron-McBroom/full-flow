@@ -14,6 +14,17 @@
               :href="'mailto:'+ $store.state.global.contactEmail">{{ $store.state.global.contactEmail }}</a>
           </p>
           <p>100% Satisfaction Guarantee</p>
+          <div class="flex gap-3 text-base">
+            <a href="https://www.facebook.com/fullflowpc/">
+              <font-awesome-icon :icon="faFacbook"/>
+            </a>
+            <a href="https://www.instagram.com/fullflowpc/">
+              <font-awesome-icon :icon="faInstagram"/>
+            </a>
+            <a :href="'mailto:' + $store.state.global.contactEmail">
+              <font-awesome-icon :icon="faAt"/>
+            </a>
+          </div>
         </div>
 
         <div class="max-w-xl mr-8">
@@ -46,8 +57,23 @@
   </div>
 </template>
 <script>
+
+import {faAt} from '@fortawesome/free-solid-svg-icons';
+import {faFacebook, faInstagram} from '@fortawesome/free-brands-svg-icons';
+
 export default {
-  name: 'footer-bar'
+  name: 'footer-bar',
+  computed: {
+    faAt() {
+      return faAt;
+    },
+    faFacbook() {
+      return faFacebook;
+    },
+    faInstagram() {
+      return faInstagram;
+    },
+  },
 }
 </script>
 
