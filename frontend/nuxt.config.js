@@ -49,12 +49,14 @@ export default {
         // https://go.nuxtjs.dev/tailwindcss
         '@nuxtjs/tailwindcss',
         '@nuxtjs/fontawesome',
+        '~/plugins/sitemapRouteGenerator'
 
     ],
 
     // Modules: https://go.nuxtjs.dev/config-modules
     modules: [
         '@nuxtjs/axios',
+        '@nuxtjs/sitemap',
         '@nuxtjs/markdownit',
         'nuxt-lazy-load'
     ],
@@ -64,6 +66,10 @@ export default {
         linkify: true,
         breaks: true,
         injected: true
+    },
+
+    sitemap: {
+        hostname: process.env.SITEMAP_HOSTNAME
     },
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
