@@ -5,11 +5,11 @@
       <!-- Mobile call icon when small      -->
       <div class="block md:hidden">
         <div class="flex gap-2">
-          <a class="px-2 py-1 text-cblue" href="tel:+61412857681">
+          <a class="px-2 py-1 text-cblue" :href="'tel:+61' + $store.state.global.contactNumber.slice(1)">
             <font-awesome-icon :icon="faPhone"/>
           </a>
 
-          <a class="px-2 py-1 text-cblue" href="sms:+61412857681">
+          <a class="px-2 py-1 text-cblue" :href="'sms:+61' + $store.state.global.contactNumber.slice(1)">
             <font-awesome-icon :icon="faMessage"/>
           </a>
         </div>
