@@ -4,8 +4,9 @@
 
     <!-- Main Content of Page   -->
     <div class="max-w-screen-lg mx-auto text-center py-24 md:py-24">
-      <review-section/>
+      <advantage/>
       <photo-section class="pt-24 md:pt-32"/>
+      <review-section class="pt-24 md:pt-32"/>
       <advantage-section class="pt-24 md:pt-32"/>
       <call-section  class="pt-24 md:pt-32"/>
       <service-section class="pt-24 md:pt-32"/>
@@ -28,11 +29,13 @@ import global from "@/mixins/global";
 import PhotoSection from "~/components/Home/PhotoSection";
 import AdvantageSection from "~/components/Home/AdvantageSection";
 import CallSection from "~/components/Home/CallSection";
+import Advantage from "@/components/Home/Advantage";
 
 export default {
   name: 'IndexPage',
   mixins: [global],
   components: {
+    Advantage,
     CallSection,
     AdvantageSection,
     PhotoSection,

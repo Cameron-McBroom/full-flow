@@ -1,12 +1,13 @@
 <template>
-  <div class=" h-full bg-gradient-to-r from-ff-primary-blue to-ff-secondary-blue pt-14 text-white">
-    <div class="max-w-screen-lg mt-20 text-center mx-auto">
+  <div class="h-full bg-gradient-to-r from-ff-primary-blue to-ff-secondary-blue pt-14 text-white">
+    <div class="px-2 md:px-0 max-w-screen-lg mt-20 text-center mx-auto">
       <div class="max-w-screen-sm mx-auto ">
-        <h1 class="text-5xl font-extrabold"> {{ headline }} </h1>
+        <h1 class="text-4xl md:text-5xl font-extrabold max-w-md mx-auto"> {{ headline }} </h1>
         <p class="text-2xl my-6 font-semibold"> {{ subheadline }} </p>
         <button class="btn-primary-red text-lg font-semibold mb-6 z-10" @click="$emit('main-action')"> Get a free quote</button>
 
         <!-- Badges that show services      -->
+        <div>We can clean the following</div>
         <div class="flex flex-wrap pt-4 gap-2 justify-center">
           <p v-for="service in shortServices" class="bg-white bg-opacity-10 px-2 py-1 rounded-lg "> {{service}} </p>
         </div>
@@ -27,16 +28,16 @@ export default {
       headline: '',
       subheadline: '',
       shortServices: [
-          'Driveway clean',
-          'Sealing',
-          'Tinted sealing',
-          'Roof clean',
-          'Paver clean',
-          'Fence clean',
-          'Deck clean',
-          'Softwash',
-          'House wash',
-          'Brick clean'
+          'Driveway',
+          'Roof',
+          'Tile & Paver',
+          'Fencing',
+          'Decking',
+          'Sandstone',
+          'House Exterior',
+          'Brick',
+          'Gutter & Eave',
+          'Windows'
       ]
     }
   },

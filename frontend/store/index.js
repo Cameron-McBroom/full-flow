@@ -43,6 +43,7 @@ export const actions = {
             const res = await this.$axios.$get("/images?populate=image")
 
             const images = res.data.map(item => {
+                console.log("Item: ", item)
                 const mediumImage = item.attributes.image.data.attributes.formats.medium
                 const largeImage = item.attributes.image.data.attributes.formats.large
                 const smallImage = item.attributes.image.data.attributes.formats.small
