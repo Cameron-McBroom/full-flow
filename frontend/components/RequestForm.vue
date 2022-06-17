@@ -78,6 +78,8 @@ export default {
 
         this.submitting = false;
         this.message = 'Thanks for requesting a quote. We will be in touch to learn how we can help.'
+
+        await this.$router.push('/quote-success')
       }
       catch (e) {
         console.log("Failed to submit form")

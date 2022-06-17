@@ -98,7 +98,7 @@ export default {
   },
   methods: {
     addScrollClasses() {
-      if (window.scrollY >= 100) {
+      if (document.getElementById('main-layout').scrollTop >= 100) {
         this.$refs.navBar.classList.add('bg-gray-100')
         this.$refs.navBar.classList.add('border-gray-200')
         this.$refs.navBar.classList.remove('border-transparent')
@@ -129,19 +129,15 @@ export default {
     async fetchServices() {
       const res = await this.$axios.$get('/services');
       this.services = res.data.map(i => {
-        console.log(i.attributes.name);
-
         return {
           path: i.attributes.name.replace(/ /g, '-').toLowerCase(),
           name: i.attributes.name
         }
       })
-
-      console.log(this.services);
     }
   },
   mounted() {
-    window.addEventListener('scroll', this.addScrollClasses)
+    document.getElementById('main-layout').addEventListener('scroll', this.addScrollClasses)
   },
 
   async fetch() {

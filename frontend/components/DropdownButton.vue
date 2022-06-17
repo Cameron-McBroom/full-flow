@@ -13,7 +13,6 @@
 <script>
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
-
 export default {
   name: "DropdownButton",
   props: {

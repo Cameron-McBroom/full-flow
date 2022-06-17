@@ -31,9 +31,6 @@ export default {
     filteredServices() {
       return this.$store.state.services.filter(i => {
         const slug = `/service/${this.slugForTitle(i.name)}`
-        console.log("Slug: ", slug)
-        console.log("Path: ", this.$route.path)
-
         return this.$route.path !== slug;
       })
     }

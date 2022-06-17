@@ -50,8 +50,6 @@ export default {
       return data.map(i => i)
     })
 
-    console.log(params)
-
     const filteredArea = services.find(i => i.attributes.area.replace(" ", "-").toLowerCase() === params.area);
 
     if (!filteredArea) redirect('/')

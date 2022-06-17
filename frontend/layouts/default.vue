@@ -1,9 +1,11 @@
 <template>
-  <div id="main-layout" class="bg-transparent text-ff-text overflow-x-hidden">
+  <div id="main-layout" class="bg-transparent text-ff-text overflow-x-hidden h-screen flex flex-col">
     <header>
       <nav-bar></nav-bar>
     </header>
-    <nuxt id="nuxt-container"/>
+    <div class="flex-1">
+      <nuxt id="nuxt-container"/>
+    </div>
     <footer class="bg-cblue text-white">
       <footer-bar/>
 

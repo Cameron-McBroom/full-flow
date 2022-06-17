@@ -62,8 +62,6 @@ export default {
       return data.map(i => i)
     })
 
-    console.log("Params: ", params)
-
     const filteredService = services.find(i => i.attributes.name.replace(/ /g, "-").toLowerCase() === params.service);
 
     if (!filteredService) redirect('/')
