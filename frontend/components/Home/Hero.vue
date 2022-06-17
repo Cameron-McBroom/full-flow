@@ -4,7 +4,7 @@
       <div class="max-w-screen-sm mx-auto ">
         <h1 class="text-4xl md:text-5xl font-extrabold max-w-md mx-auto"> {{ headline }} </h1>
         <p class="text-2xl my-6 font-semibold"> {{ subheadline }} </p>
-        <button class="btn-primary-red text-lg font-semibold mb-6 z-10" @click="$emit('main-action')"> Get a free quote</button>
+        <button id="hero-btn" class="btn-primary-red text-lg font-semibold mb-6 z-10" @click="$emit('main-action')"> Get a free quote</button>
 
         <!-- Badges that show services      -->
         <div>We can clean the following</div>

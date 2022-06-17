@@ -83,7 +83,7 @@ export default {
       }
       catch (e) {
         console.log("Failed to submit form")
-        this.message = 'There was an error trying to submit your request';
+        this.message = 'Sorry, there was an error trying to submit your request';
         this.submitting = false;
 
       }

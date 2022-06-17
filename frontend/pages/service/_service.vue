@@ -4,7 +4,7 @@
       <div class="max-w-screen-md mx-auto">
         <h1 class="text-4xl font-bold mb-4 text-center"> {{ filteredService.attributes.name }} </h1>
         <p class="text-lg text-center mb-4"> {{ filteredService.attributes.descriptionShort }} </p>
-        <button class="btn-primary-blue" @click="scrollToQuoteForm"> Get a free quote</button>
+        <button id="quote-cta-btn" class="btn-primary-blue" @click="scrollToQuoteForm"> Get a free quote</button>
       </div>
 
       <gallery class="my-10 md:my-20" :service-ids="[filteredService.id]"/>
@@ -30,7 +30,7 @@ export default {
   components: {ServiceSection, ReviewSection, QuoteSection},
   head() {
     return {
-      title: this.seo?.metaTitle || 'Service | Uplift Painting',
+      title: this.seo?.metaTitle || 'Service | Full Flow Pressure Cleaning',
       meta: [
         {
           hid: 'description',
