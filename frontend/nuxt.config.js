@@ -9,7 +9,7 @@ export default {
 
     // Global page headers: https://go.nuxtjs.dev/config-head
     head: {
-        title: 'Uplift Painting & Decorating | Quality Painting Sydney',
+        title: 'Full Flow Pressure Cleaning | Western Sydney & Blue Mountains',
         htmlAttrs: {
             lang: 'en'
         },

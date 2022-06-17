@@ -13,7 +13,12 @@
 
 <script>
 export default {
-  name: "quote-success"
+  name: "quote-success",
+  head() {
+    return {
+      title: "Quote Success | Full Flow Pressure Cleaning"
+    }
+  },
 }
 </script>
 
