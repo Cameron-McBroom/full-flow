@@ -79,8 +79,8 @@ export default {
         this.submitting = false;
         this.message = 'Thanks for requesting a quote. We will be in touch to learn how we can help.'
 
-        if (document.dataLayer) {
-          document.dataLayer.push({ event: 'quote_form_submission'})
+        if (window.dataLayer) {
+          window.dataLayer.push({ event: 'quote_form_submission'})
         }
         await this.$router.push('/quote-success')
       }
