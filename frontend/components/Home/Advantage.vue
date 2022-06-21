@@ -1,6 +1,6 @@
 <template>
   <div class="px-2 md:px-0">
-    <h2 class="pb-10 md:pb-20">It's not all about high pressure</h2>
+    <h2 class="pb-10 md:pb-20">It's not <span class="italic">just</span> about high pressure</h2>
     <div class="max-w-screen-md mx-auto text-lg text-left">
       <p>
       High pressure is great for clearing away dirt, muck and mould.
