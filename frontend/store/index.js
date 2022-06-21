@@ -6,7 +6,9 @@ export const state = () => ({
     images: {}
 })
 
-export const getters = {}
+export const getters = {
+    imagesForServiceId: id => state => state.images.filter(i => i.serviceId = id)
+}
 
 export const mutations = {
     setServices(state, payload) {

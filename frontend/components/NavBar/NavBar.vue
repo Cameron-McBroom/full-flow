@@ -57,12 +57,16 @@
         <mobile-menu-overlay ref="menuOverlay" @closed="mobileMenuShowing = false" :logoUrl="logoUrl"/>
 
       </div>
-      <button @click="scrollToQuoteForm"
-              class="text-sm hidden md:inline-block bg-black bg-opacity-5 px-3 pt-1 font-bold rounded">
-        <span class="block">
-        Free Quote </span>
-        0426 437 739
-      </button>
+
+      <div class="hidden md:inline-block">
+        <button @click="scrollToQuoteForm"
+                class="text-sm font-bold text-white bg-blue-500 hover:bg-opacity-80 rounded px-2 py-1">
+          Request Quote
+        </button>
+        <button class="text-sm font-bold block">
+           or 0426 437 739
+        </button>
+      </div>
     </div>
   </nav>
 </template>

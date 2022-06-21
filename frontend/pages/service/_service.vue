@@ -3,21 +3,26 @@
     <div class="pt-24 md:pt-28 mx-5">
       <div class="max-w-screen-md mx-auto">
         <h1 class="text-4xl font-bold mb-4 text-center"> {{ filteredService.attributes.name }} </h1>
+        <img :src="$parseUrl(filteredService.attributes.coverImage.data.attributes.url)" alt="coverImage" class="mb-4 w-full max-h-80 object-cover"/>
         <p class="text-lg text-center mb-4"> {{ filteredService.attributes.descriptionShort }} </p>
         <button id="quote-cta-btn" class="btn-primary-blue" @click="scrollToQuoteForm"> Get a free quote</button>
       </div>
 
-      <gallery class="my-10 md:my-20" :service-ids="[filteredService.id]"/>
-      <nuxt-link to="/gallery">
-        <button class="btn-primary-blue-outline">See our full gallery</button>
-      </nuxt-link>
+
 
       <div class="text-base markdown text-left pt-10 md:pt-20" v-html="filteredService.attributes.descriptionLong"></div>
-  </div>
 
-  <review-section class="pt-16 md:pt-24"/>
-  <quote-section class="pt-16 md:pt-24"/>
-  <service-section class="py-16 md:py-24"/>
+      <div class="my-10 md:my-20">
+        <h2 class="pb-5">Some of our work</h2>
+        <gallery class="pb-5"/>
+        <nuxt-link to="/gallery">
+          <button class="btn-primary-blue-outline">See our full gallery</button>
+        </nuxt-link>
+      </div>
+      <review-section class="pt-16 md:pt-24"/>
+      <quote-section class="pt-16 md:pt-24"/>
+      <service-section class="py-16 md:py-24"/>
+    </div>
   </div>
 </template>
 
@@ -57,7 +62,7 @@ export default {
   },
 
   async asyncData({params, redirect, $axios, $md}) {
-    const services = await $axios.$get('/services?populate=seo').then(res => {
+    const services = await $axios.$get('/services?populate=%2A').then(res => {
       const {data} = res;
       return data.map(i => i)
     })

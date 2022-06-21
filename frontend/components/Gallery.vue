@@ -49,7 +49,9 @@ export default {
       }
 
       if (filteredImages.length > 9) {
-        return filteredImages.slice(0, 9);
+
+        return this.$mq === 'sm' ? filteredImages.slice(0,8) : filteredImages.slice(0, 9);
+
       }
 
       return filteredImages;
