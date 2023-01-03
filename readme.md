@@ -1,6 +1,6 @@
-# Uplift Painting & Decorating
+# Full Flow Pressure Cleaning Website
 
-Uplift painting and decorating is build using Nuxt as the frontend application
+Full Flow Pressure Cleaning Website is built using Nuxt as the frontend application
 and Strapi and the backend.
 
 ### Backend
